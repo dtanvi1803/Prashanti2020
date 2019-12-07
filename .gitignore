@@ -4,7 +4,10 @@
 /dist
 /tmp
 /out-tsc
-
+bin
+obj
+*.db
+appsettings.json
 # dependencies
 /node_modules
 
