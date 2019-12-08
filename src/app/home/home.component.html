@@ -1,18 +1,44 @@
 <div class="container mt-5">
-  <div *ngIf="!this.registerMode" style="text-align: center">
-    <h1>Find your match</h1>
-    <p class="lead">Come on in to view your matches... All you need to do is sign up!</p>
-    <div class="text-center">
-      <button class="btn btn-primary btn-lg mr-2"(click) ="registerToggle()">Register</button>
-      <button class="btn btn-info btn-lg">Learn more</button>
-    </div>
+<!-- <div class="row">
+  <div class="col-md-6 col-sm-12">
+      <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FPrashantiClinic%2F&tabs=timeline&width=430&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=1430422657048237" width="430" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
   </div>
-
-  <div *ngIf="this.registerMode" class="container">
-    <div class="row justify-content-center">
-      <div class="col-4">
-        <app-register (cancelRegister) = "cancelRegisterMode($event)"></app-register>
-      </div>
-    </div>
-  </div>
+  <div class="col-md-3 col-sm-12">
+      <div class="card">
+          <h5 class="card-header"><b>Dr. Mahesh Desai </b><span></span> <i>M.D. (Psych) D.PM</i></h5>
+          <div class="card-body">
+            <h5 class="card-title">Book Appointment</h5>
+            <p class="card-text">Plot No.2, 3rd floor, B-3 K. R. House, Anandnagar Society, Next to Paramdham, Kailashnagar, Sagrampura, Surat - 395002. Phone:+91 9537888662, +91 9537888663, +91 94288 22287,+91 94288 22288,
+                +91 261 2477677, +91 261 2460523 -99249 29508</p>
+            <p class="card-text">Matru Prayag, 4th Floor, Azad Chawk Tower Road, Valsad-396001. Phone:+91 2632 246099, +91 9428822286.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>   -->
+      <div *ngIf="!this.registerMode" style="text-align: center">
+          <h1>Find your match</h1>
+          <p class="lead">Come on in to view your matches... All you need to do is sign up!</p>
+          <div class="text-center">
+            <button class="btn btn-primary btn-lg mr-2"(click) ="registerToggle()">Register</button>
+            <button class="btn btn-info btn-lg">Learn more</button>
+          </div>
+        </div> -->
+      <div *ngIf="this.registerMode" class="container">
+          <div class="row justify-content-center">
+            <div class="col-4">
+              <app-register (cancelRegister) = "cancelRegisterMode($event)"></app-register>
+            </div>
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div class="col-md-3 col-sm-12">
+          <div class="card">
+              <h5 class="card-header"><b>Dr. Mahesh Desai </b><span></span> <i>M.D. (Psych) D.PM</i></h5>
+              <div class="card-body">
+                <h5 class="card-title">Consulting Psychiatrist with 35+ years experience</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>          
+      </div> -->
+  <!-- </div> -->
 </div>

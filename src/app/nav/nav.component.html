@@ -1,22 +1,24 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" [routerLink]="['/home']" >Prashanti Clinic</a>
   
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
+        <!-- <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/home']" >Home</a>
+        </li> -->
+        <li class="nav-item" routerLinkActive="active" >
+          <a class="nav-link" [routerLink]="['/aboutus']">About Us</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contat Us</a>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/contactus']" >Contat Us</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Scale Yourself</a>
         </li>
-        <li class="nav-item dropdown" dropdown>
-          <a class="nav-link dropdown-toggle" dropdownToggle href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mental Illness</a>
+        <li class="nav-item dropdown" routerLinkActive="active" dropdown>
+          <a class="nav-link dropdown-toggle" dropdownToggle
+            [routerLink]="['/mentalillness']" 
+            id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mental Illness</a>
           <div class="dropdown-menu mt-3" aria-labelledby="dropdown01" *dropdownMenu>
             <a class="dropdown-item" href="#">ADHD</a>
             <a class="dropdown-item" href="#">Anxiety</a>
@@ -26,14 +28,16 @@
             <a class="dropdown-item" href="#">Myths</a>
           </div>
         </li>
+        <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/listpatients']" >List Patients</a>
+          </li>        
       </ul>
-  
       <div *ngIf="loggedIn()" class="dropdown" dropdown>
         <button  class="dropdown-toggle text=light" dropdownToggle>
           Welcome {{ authService.decodedToken?.unique_name | titlecase}}
         </button>
         <div class="dropdown-menu mt-3" aria-labelledby="dropdownMenuButton"  *dropdownMenu >
-          <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Edit Profile</a>
+          <a class="dropdown-item" href="#" ><i class="fa fa-user"></i>Edit Profile</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" (click) = "logout()"><i class="fa fa-sign-out"></i>Logout</a>
         </div>

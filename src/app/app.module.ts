@@ -12,6 +12,12 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.Interceptor';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { AboutUsComponent } from './aboutUs/aboutUs.component';
+import { ContactUsComponent } from './ContactUs/ContactUs.component';
+import { MentalIllnessComponent } from './MentalIllness/MentalIllness.component';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './routes';
+import { ListPatientsComponent } from './ListPatients/ListPatients.component';
 
 @NgModule({
    declarations: [
@@ -19,13 +25,18 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
       ValueComponent,
       NavComponent,
       HomeComponent,
-      RegisterComponent
+      RegisterComponent,
+      AboutUsComponent,
+      ContactUsComponent,
+      MentalIllnessComponent,
+      ListPatientsComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
-      BsDropdownModule.forRoot()
+      BsDropdownModule.forRoot(),
+      RouterModule.forRoot(appRoutes)
    ],
    providers: [
       AuthService,
