@@ -5,6 +5,7 @@ export interface User {
     isAdmin: boolean;
     gender: string;
     dateOfBirth: Date;
+    age: number;
     lastActive: Date;
     city: string;
     country: string;

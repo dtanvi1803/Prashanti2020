@@ -1,0 +1,45 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-title">{{user.username}}</div>
+        <div class="card-body">
+          <div>
+            <strong>Location: </strong>
+            <p>{{user.city}}, {{user.country}}</p>
+            <strong>Intrests:</strong>
+            <p>{{user.intrests}}</p>  
+            <strong>Age:</strong>
+            <p>{{user.age}}</p> 
+            <strong>Last Active:</strong>
+            <p>{{user.lastActive}}</p>                            
+        </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="btn btn-primary w-100">Patients</button>
+            <button class="btn btn-secondary w-100">Message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabset">
+          <tab heading ="About {{user?.username}}">
+            <h4>Introduction</h4>
+            <p>{{user.intrests }}</p>
+            <h4>LookingFor</h4>
+            <p>{{user.lookingFor }}</p>            
+          </tab>
+          <tab heading ="Patients">
+            <p>Patients</p>
+          </tab>
+          <tab headng="Messages">
+            <p>Messages</p>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

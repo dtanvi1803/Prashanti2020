@@ -29,15 +29,18 @@
           </div>
         </li>
         <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/listpatients']" >List Patients</a>
-          </li>        
-      </ul>
+            <a class="nav-link" [routerLink]="['/lstpatients']" >List Patients</a>
+        </li>        
+        <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/listusers']" >List Users</a>
+        </li>        
+    </ul>
       <div *ngIf="loggedIn()" class="dropdown" dropdown>
         <button  class="dropdown-toggle text=light" dropdownToggle>
           Welcome {{ authService.decodedToken?.unique_name | titlecase}}
         </button>
         <div class="dropdown-menu mt-3" aria-labelledby="dropdownMenuButton"  *dropdownMenu >
-          <a class="dropdown-item" href="#" ><i class="fa fa-user"></i>Edit Profile</a>
+          <a class="dropdown-item" [routerLink]="['/listusers/edit']" ><i class="fa fa-user"></i>Edit Profile</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" (click) = "logout()"><i class="fa fa-sign-out"></i>Logout</a>
         </div>

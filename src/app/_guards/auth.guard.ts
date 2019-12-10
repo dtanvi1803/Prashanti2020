@@ -11,7 +11,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
-    private router: Router, 
+    private router: Router,
     private alertify: AlertifyService) {}
 
   canActivate(): boolean  {
