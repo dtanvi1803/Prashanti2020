@@ -10,15 +10,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./ListPatients.component.css']
 })
 export class ListPatientsComponent implements OnInit {
-
+  patients: Patient[];
   constructor(private patientService: PatientService, 
               private alertify: AlertifyService,
               private route: ActivatedRoute) { }
-  patients: Patient[];
   ngOnInit() {
-    // this.route.data.subscribe(data => {
-    //   this.patients = data['patients'];
-    // });
+     this.route.data.subscribe(data => {
+       this.patients = data['patients'];
+    });
   }
 
 }

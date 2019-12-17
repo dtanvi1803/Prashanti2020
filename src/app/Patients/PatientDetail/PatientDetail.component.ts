@@ -16,8 +16,8 @@ export class PatientDetailComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // this.route.data.subscribe(data => {
-    //   this.patient = data['patient'];
-    // });
+    this.route.data.subscribe(data => {
+    this.patient = data['patient'];
+    });
   }
 }

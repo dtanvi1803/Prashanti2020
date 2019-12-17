@@ -1,3 +1,50 @@
-<p>
-  PatientDetail works!
-</p>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-title">{{patient.name}}</div>
+        <div class="card-body">
+          <div>
+            <strong>Location: </strong>
+            <p>{{patient.city}}, {{patient.Country}}</p>
+            <strong>Contact No:</strong>
+            <p>{{patient.contactNo}}, {{patient.email}}</p> 
+            <strong>Age:</strong>
+            <p>{{patient.Age}} : Gender {{patient.gender}}</p> 
+            <strong>Last Visit:</strong>
+            <p>{{patient.lastVisit}}</p>                            
+        </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="btn btn-primary w-100" [routerLink]="['/lstpatients/edit/', patient.id]">Edit</button>
+            <button class="btn btn-primary w-100">VisitDetails</button>
+            <button class="btn btn-primary w-100">RadiologyReports</button>
+            <button class="btn btn-secondary w-100">Message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabset">
+          <tab heading ="About {{patient?.name}}">
+            <h4>Diagnosis</h4>
+            <p>{{patient.diagnosis }}</p>
+            <h4>Snapshot</h4>
+            <p>{{patient.snapshot }}</p>            
+          </tab>
+          <tab heading ="Visit Details">
+            <p>Visit details</p>
+          </tab>
+          <tab heading ="Radiology Reports">
+            <p>Radiology Reports</p>
+          </tab>          
+          <tab headng="Messages">
+            <p>Messages</p>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

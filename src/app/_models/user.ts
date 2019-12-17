@@ -13,6 +13,6 @@ export interface User {
     contactno?: string;
     introduction?: string;
     lookingFor?: string;
-    intrests?: string;
+    interests?: string;
 
 }

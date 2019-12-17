@@ -17,4 +17,7 @@ getPatients(): Observable<Patient[]> {
 getPatient(id: number): Observable<Patient> {
   return this.http.get<Patient>(this.baseUrl + 'patients/' + id );
 }
+UpdatePatient(id: number, patient: Patient) {
+  return this.http.put(this.baseUrl + 'patients/' + id, patient);
+}
 }

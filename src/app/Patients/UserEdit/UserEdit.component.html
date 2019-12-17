@@ -16,8 +16,8 @@
             <div>
               <strong>Location: </strong>
               <p>{{user.city}}, {{user.country}}</p>
-              <strong>Intrests:</strong>
-              <p>{{user.intrests}}</p>  
+              <strong>Interests:</strong>
+              <p>{{user.interests}}</p>  
               <strong>Age:</strong>
               <p>{{user.age}}</p> 
               <strong>Last Active:</strong>
@@ -36,11 +36,10 @@
                 <form #editForm="ngForm" id="editForm" (ngSubmit) = "updateUser()">
                         <h4>Introduction</h4>
                         <textarea name="Introduction" rows="6" class="form-control" [(ngModel)]="user.introduction"></textarea>
-                        <p>{{user.intrests }}</p>
                         <h4>LookingFor</h4>
                         <textarea name="Lookingfor" rows="6" class="form-control" [(ngModel)]="user.lookingFor"></textarea>
-                        <h4>Intrests</h4>
-                        <textarea name="Intrests" rows="6" class="form-control" [(ngModel)]="user.intrests"></textarea>
+                        <h4>Interests</h4>
+                        <textarea name="Interests" rows="6" class="form-control" [(ngModel)]="user.interests"></textarea>
                         <h4>Location Details:</h4>
                         <div class="form-inLine">
                             <label for="city">City</label>

@@ -1,0 +1,68 @@
+<div class="container mt-4">
+  <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-8">
+          <div *ngIf="editForm.dirty" class="alert alert-info">
+              <strong>Information:</strong> You have made changes. Any unsaved changes will lost!
+          </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+          <h1>{{patient.name}} Profile</h1>
+      <div class="card">
+        <div class="card-title">{{patient.name}}</div>
+        <div class="card-body">
+          <div>
+            <strong>Location: </strong>
+            <p>{{patient.city}}, {{patient.Country}}</p>
+            <strong>Contact No:</strong>
+            <p>{{patient.contactNo}}, {{patient.email}}</p> 
+            <strong>Age:</strong>
+            <p>{{patient.Age}} : Gender {{patient.gender}}</p> 
+            <strong>Last Visit:</strong>
+            <p>{{patient.lastVisit}}</p>                            
+        </div>
+        </div>
+        <div class="card-footer">
+            <button [disabled]="! editForm.dirty" form="editForm" class= "btn btn-success">Save Changes</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabset">
+          <tab heading ="Edit Profile">
+              <form #editForm="ngForm" id="editForm" (ngSubmit) = "updatePatient()">
+                      <h4>Diagnosis</h4>
+                      <textarea name="Diagnosis" rows="6" class="form-control" [(ngModel)]="patient.diagnosis"></textarea>
+                      <p>{{patient.diagnosis }}</p>
+                      <h4>Snapshot</h4>
+                      <textarea name="Snapshot" rows="6" class="form-control" [(ngModel)]="patient.snapshot"></textarea>
+                      <h4>Remakr</h4>
+                      <textarea name="remark" rows="6" class="form-control" [(ngModel)]="patient.remark"></textarea>
+                      <h4>Location Details:</h4>
+                      <div class="form-inLine">
+                          <label for="city">City</label>
+                          <input class="form-control" type="text" name="city" [(ngModel)]="patient.city">
+                          <label for="country">Country</label>
+                          <input class="form-control" type="text" name="country" [(ngModel)]="patient.Country">
+                      </div>
+                      
+              </form>
+        
+          </tab>
+          <tab heading ="Visit Details">
+            <p>Visit Details</p>
+          </tab>
+          <tab headng="Radiology Reports">
+            <p>Radiology Reports</p>
+          </tab>
+          <tab headng="Message">
+            <p>Messages</p>
+          </tab>          
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

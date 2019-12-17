@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
@@ -11,7 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.Interceptor';
 
-import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule, TabsModule, BsDatepickerModule } from 'ngx-bootstrap';
 import { AboutUsComponent } from './aboutUs/aboutUs.component';
 import { ContactUsComponent } from './ContactUs/ContactUs.component';
 import { MentalIllnessComponent } from './MentalIllness/MentalIllness.component';
@@ -32,6 +33,9 @@ import { UserEditComponent } from './Patients/UserEdit/UserEdit.component';
 import { UserEditResolver } from './_Resolvers/user-edit.resolver';
 import { AuthGuard } from './_guards/auth.guard';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { PatientEditComponent } from './Patients/PatientEdit/PatientEdit.component';
+import { PatientPreventUnsavedChanges } from './_guards/patient-prevent-unsaved-changes.guard';
+import { PatientEditResolver } from './_Resolvers/patient-edit.resolver';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -53,13 +57,18 @@ export function tokenGetter() {
       UserCardComponent,
       UserDetailComponent,
       PatientDetailComponent,
-      UserEditComponent
+      UserEditComponent,
+      PatientCardComponent,
+      PatientEditComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      ReactiveFormsModule,
+      BrowserAnimationsModule,
       BsDropdownModule.forRoot(),
+      BsDatepickerModule.forRoot(),
       TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
@@ -75,11 +84,13 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AuthGuard,
       PreventUnsavedChanges,
+      PatientPreventUnsavedChanges,
       UserDetailResolver,
       UserListResolver,
       PatientListResolver,
       PatientDetailResolver,
-      UserEditResolver
+      UserEditResolver,
+      PatientEditResolver
    ],
    bootstrap: [
       AppComponent
