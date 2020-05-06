@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { PaginatedResult } from '../_models/pagination';
 import { map } from 'rxjs/operators';
 import { VisitDetail } from '../_models/visitDetails';
+import { VisitDetailCardComponent } from '../Patients/VisitDetailCard/VisitDetailCard.component';
 
 
 @Injectable({
@@ -61,5 +62,8 @@ getVisit(id: number): Observable<VisitDetail> {
 }
 UpdateVisit(id: number, patientId: number, visit: VisitDetail) {
   return this.http.put(this.baseUrl + 'patients/' + patientId + '/visits/' + id, visit);
+}
+AddVisit(visit: VisitDetail) {
+  return this.http.post(this.baseUrl+'patients/visits', visit);
 }
 }

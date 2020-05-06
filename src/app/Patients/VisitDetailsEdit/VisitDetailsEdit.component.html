@@ -23,11 +23,14 @@
               <h4>Interests</h4>
               <textarea class="form-control" name="remark" rows="6" 
               [(ngModel)]="visit.remark"></textarea>
-                
+              <button  Form="editForm" class="btn btn-success btn-block">Save Changes</button> 
+              <button class="btn btn-info btn-block" (click) = "ResetForm()">New</button>                
           </form>
-
-
+          
       </div>
+      <div class="card-footer">
+
+      </div>      
       </div>
     </div>
   </div>

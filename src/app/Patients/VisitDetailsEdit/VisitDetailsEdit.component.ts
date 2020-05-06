@@ -47,12 +47,24 @@ loadVisits() {
 loadPatient() {
   this.patientService.getPatient(this.patientId).subscribe( p => this.patient = p);
 }
+ResetForm() {
+  this.editForm.reset();
+}
 updateVisit() {
+  if (this.visitId == null) {
+    this.patientService.AddVisit(this.visit).subscribe(next => {
+      this.alertify.success('Visit Added');
+      this.editForm.reset(this.visit);
+    }, error => {
+      this.alertify.error(error);
+    });
+  } else {
   this.patientService.UpdateVisit(this.visitId, this.patientId, this.visit).subscribe(next => {
     this.alertify.success('Visit udated');
     this.editForm.reset(this.visit);
   }, error => {
     this.alertify.error(error);
   });
+  }
 }
 }
