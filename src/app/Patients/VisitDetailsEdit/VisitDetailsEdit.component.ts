@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { AlertifyService } from '../../_services/alertify.service';
 import { PatientService } from '../../_services/patient.service';
 import { NgForm } from '@angular/forms';
+import { BsDatepickerConfig } from 'ngx-bootstrap';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-VisitDetailsEdit',
@@ -17,6 +19,7 @@ export class VisitDetailsEditComponent implements OnInit {
   visit: VisitDetail;
   visitId: number;
   patientId: number;
+  bsConfig: Partial<BsDatepickerConfig>;
 
   constructor(private route: ActivatedRoute, 
               private alertify: AlertifyService,
@@ -31,7 +34,7 @@ export class VisitDetailsEditComponent implements OnInit {
     // this.patientId = this.visit.patientId;
     // console.log('snapshot visit' + this.visitId + ' patientid ' + this.patientId);
     //this.loadPatient();
-    // this.route.data.subscribe(data => {
+    // tis.route.data.subscribe(data => {
     //   console.log(data);
     //   this.visit = data['visit'];
     //   console.log('visit in data ngoinit' + this.visit);
@@ -48,23 +51,32 @@ loadPatient() {
   this.patientService.getPatient(this.patientId).subscribe( p => this.patient = p);
 }
 ResetForm() {
+  this.visit = Object.assign({}, this.editForm.value);
   this.editForm.reset();
+  this.visit.id = 0;
 }
 updateVisit() {
-  if (this.visitId == null) {
-    this.patientService.AddVisit(this.visit).subscribe(next => {
+  console.log('going to update visit logic');
+  if (this.visitId <= 0) {
+    console.log('going to new rec');
+    this.visit.patientId = this.patientId;
+    this.patientService.AddVisitForPatient(this.visit).subscribe(next => {
       this.alertify.success('Visit Added');
       this.editForm.reset(this.visit);
     }, error => {
       this.alertify.error(error);
+      console.error(error);
     });
   } else {
-  this.patientService.UpdateVisit(this.visitId, this.patientId, this.visit).subscribe(next => {
+  console.log('going to update rec');
+  this.patientService.UpdateVisit(this.visitId, this.visit).subscribe(next => {
+    console.log(next);
     this.alertify.success('Visit udated');
     this.editForm.reset(this.visit);
   }, error => {
-    this.alertify.error(error);
+    this.alertify.error(error.error);
+    console.error(error);
   });
   }
-}
+ }
 }

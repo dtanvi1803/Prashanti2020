@@ -15,7 +15,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 return throwError(errorRes.statusText);
             }
             if (errorRes instanceof HttpErrorResponse) {       // 500 type errors
-                console.log('500 type error' + errorRes);
+                console.log('500 type error' + JSON.stringify(errorRes));
                 const applicationError = errorRes.headers.get('Application-Error');
                 if (applicationError) {
                     return throwError(applicationError);

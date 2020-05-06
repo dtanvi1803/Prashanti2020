@@ -1,32 +1,54 @@
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col">
         <h1>{{patient?.name}} visit Profile</h1>
     <div class="card">
       <div class="card-title">{{visit.id}}</div>
       <div class="card-body">
         <div>
-          <strong>Complaint: </strong>
+          <!-- <strong>Complaint: </strong>
           <p>{{visit.complaints}}</p>
           <strong>condition :</strong>
           <p>{{visit.condition}}</p> 
           <strong>remark:</strong>
           <p>{{visit.remark}}</p> 
           <strong>Last Visit:</strong>
-          <p>{{patient?.lastVisit}}</p> 
+          <p>{{patient?.lastVisit}}</p>  -->
           <form #editForm = "ngForm" id="editForm" (ngSubmit)="updateVisit()">
-            <h4>Description</h4>
-            <textarea class="form-control" name="complaints" rows="6" 
+            <h4>Visit Id</h4>
+            <input type="text" class="form-control" name="id"
+            [(ngModel)] = "visit.id">
+            <h4>Visit Date</h4>
+            <input class="form-control"
+            placeholder="Visit Date" name="visitDate"
+             type="date"
+             [(ngModel)] = "visit.visitDate"
+            bsDatepicker [bsConfig] = "bsConfig" >
+     
+         
+            <h4>Complaints</h4>
+            <textarea class="form-control" name="complaints" rows="3" 
               [(ngModel)]="visit.complaints"></textarea>
-              <h4>Looking For</h4>
-              <textarea class="form-control" name="condition" rows="6" 
+              <h4>Condition</h4>
+              <textarea class="form-control" name="condition" rows="3" 
               [(ngModel)]="visit.condition"></textarea>
-              <h4>Interests</h4>
-              <textarea class="form-control" name="remark" rows="6" 
-              [(ngModel)]="visit.remark"></textarea>
-              <button  Form="editForm" class="btn btn-success btn-block">Save Changes</button> 
-              <button class="btn btn-info btn-block" (click) = "ResetForm()">New</button>                
+              <h4>Prescription</h4>
+              <textarea class="form-control" name="prescription" rows="3" 
+              [(ngModel)]="visit.prescription"></textarea>
+
+              <h4>Advise</h4>
+              <textarea class="form-control" name="advise" rows="3" 
+              [(ngModel)]="visit.advise"></textarea>
+
+              <h4>Findings</h4>
+              <textarea class="form-control" name="findings" rows="3" 
+              [(ngModel)]="visit.findings"></textarea>
+
+              <h4>Remarks</h4>
+              <textarea class="form-control" name="remark" rows="3" 
+              [(ngModel)]="visit.remark"></textarea>               
           </form>
-          
+          <button  Form="editForm" class="btn btn-success btn-block">Save Changes</button> 
+          <button class="btn btn-info btn-block" (click) = "ResetForm()">New</button>           
       </div>
       <div class="card-footer">
 

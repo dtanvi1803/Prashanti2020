@@ -60,10 +60,10 @@ getVisits(id: number) {
 getVisit(id: number): Observable<VisitDetail> {
   return this.http.get<VisitDetail>(this.baseUrl + 'patients/visits/' + id);
 }
-UpdateVisit(id: number, patientId: number, visit: VisitDetail) {
-  return this.http.put(this.baseUrl + 'patients/' + patientId + '/visits/' + id, visit);
+UpdateVisit(id: number, visit: VisitDetail) {
+  return this.http.put(this.baseUrl + 'patients/visits/' + id, visit);
 }
-AddVisit(visit: VisitDetail) {
-  return this.http.post(this.baseUrl+'patients/visits', visit);
+AddVisitForPatient(visit: VisitDetail) {
+  return this.http.post(this.baseUrl + 'patients/visits', visit);
 }
 }
