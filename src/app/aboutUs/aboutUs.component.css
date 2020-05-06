@@ -1,0 +1,12 @@
+.example-headers { 
+    background: lightyellow;
+}
+.example-panel {
+    background: rgb(231, 238, 243);
+}
+.disable_ripple:hover{
+    background: lightcyan !important;
+    }
+.dieseaseLink {
+    color: navy;
+}

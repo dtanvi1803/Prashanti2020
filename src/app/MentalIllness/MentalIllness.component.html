@@ -1,3 +1,429 @@
-<p>
-  MentalIllness works!
-</p>
+<mat-accordion>
+  <!-- Anxiety -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Anxiety
+      </mat-panel-title>
+      <mat-panel-description>
+        Clinic and Anxiety
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Anxiety Disoder
+          </mat-panel-title>
+          <mat-panel-description>
+            Low self-esteem and self-defeating or distorted thinking
+            <mat-icon>account_circle</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+          <p>The most common time of onset is between the ages of 20 and 30 years, with a later peak between 30 and 40 years.</p>
+          <p>Various aspects of personality and its development appear to be integral to the occurrence and persistence of depression, with negative emotionality as a common precursor.</p>
+          <p> Although depressive episodes are strongly correlated with adverse events, a person's characteristic style of coping may be correlated with their resilience. Additionally, low self-esteem and self-defeating or distorted thinking are related to depression. Depression is less likely to occur, as well as quicker to remit, among those who are religious. It is not always clear which factors are causes or which are effects of depression; however, depressed persons who are able to reflect upon and challenge their thinking patterns often show improved mood and self-esteem </p>      
+        <mat-action-row>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Anxiety typical case study
+          </mat-panel-title>
+          <mat-panel-description>
+            case study
+            <mat-icon>map</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        case study about anxiety
+    
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            self help and doctor consultation
+          </mat-panel-title>
+          <mat-panel-description>
+            self help and doctor consultation
+            <mat-icon>date_range</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        self help and doctor consultation
+    
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">End</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+    </mat-accordion>
+    
+  </mat-expansion-panel>
+  <!-- Anxiety finished -->
+
+  <!-- ADHD -->
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        ADHD
+      </mat-panel-title>
+      <mat-panel-description>
+        ADHD
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            know about ADHD
+          </mat-panel-title>
+          <mat-panel-description>
+            adhd disorder more information
+            <mat-icon>account_circle</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        adhd diorder more information
+    
+        <mat-action-row>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Typical ADHD case study
+          </mat-panel-title>
+          <mat-panel-description>
+            adhd case 
+            <mat-icon>map</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        adhd case study
+    
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            adhd self help and doctor consultation
+          </mat-panel-title>
+          <mat-panel-description>
+            adhd self help and doctor consultaion
+            <mat-icon>date_range</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        self help and doctor consultation
+    
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">End</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+    </mat-accordion>
+        
+  </mat-expansion-panel>
+  <!-- ADHD finished -->
+
+  <!--Depresion-->
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Depresion
+      </mat-panel-title>
+      <mat-panel-description>
+        Depresion
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            know about Depresion
+          </mat-panel-title>
+          <mat-panel-description>
+            Depresion disorder more information
+            <mat-icon>account_circle</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        <p>Depression is a low mood that lasts for a long time, and affects your everyday life. It feels like I'm stuck under a huge grey-black cloud. It's dark and isolating, smothering me at every opportunity.</p>
+    
+        <mat-action-row>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Typical Depresion case study
+          </mat-panel-title>
+          <mat-panel-description>
+            Depresion case 
+            <mat-icon>map</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>In today's era the burning problem our society is facing is of adjustment disorder. The main reason being difference of opinion,communication gap,generation gap. Be it before marriage or after marriage, adjustment disability is causing turmoil in families.</p>
+          <p>One such case is shared below : female of about 30 yrs  ...married since 3 yrs. </p>
+          <p>Initial years were fairly good. Gradually daily arguments continued to stress. Pt became biased and started getting irritated at slightest difference of opinion, minor criticism. Every statement told to her by in-laws, husband used to pierce her mind causing immense emotional pain. Gradually she started having indifference towards husband and consequently their marital life was also affected. Terms with mother in law were spoiled to the worst.
+          She started having sleep disturbance, poor motivation for work, her job was affected, profound sadness, weeping spells..</p>
+          <p>Doctor's observation after treatment :</p>
+          <p>After 5-6 months she was brought to us.</p>
+          <p>After detailed history and analysing her complains she was prescribed antidepressants, to which she responded drastically within 3 weeks. Improvement further progressed and rejoined her job within 6 weeks.</p>
+          <p>Now she is able to handle the routine work and domestic issues easily without disturbing her Psyche. This was a case of adjustment disorder with depression .</p>
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Depresion case study
+          </mat-panel-title>
+          <mat-panel-description>
+            One more Depresion case 
+            <mat-icon>map</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Kira 26 years old, married before 2 years. It was the happiest day when her gynaecologist confirmed her pregnancy. She went for her regular check ups. Everything went normally and finally the day arrived when she delivered a healthy baby boy.</p>
+          <p>Delivery was normal and she was discharged from hospital next day. Later on, after 2-3 days she started having c/o sleep disturbance. Gradually she started having negative thoughts, worthless feeling, profound sadness, poor motivation for work, emotionally cold. She couldn't even take care of her kid. His cry didn't affect her much </p>
+          <p>The stage worsened, she constantly started having suicidal thoughts.
+          </p>
+          <p>Doctor's observation after treatment :</p>
+          <p>When she was brought to us, her condition was very miserable. Eyes swollen due to excessive weeping, gloomy look. Crying even while narrating her complaints. After taking optimum dose of antidepressants, within 15-20 days her conditions improved and she returned to her normal routine within 3 months. </p>
+          <p>We may wander why suddenly it happened to her but many times hormonal changes occurring in a female may cause turmoil emotionally. Becoming difficult for her to manage it. This disturbance is termed postpartum depression.</p>
+          
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Depresion case study
+          </mat-panel-title>
+          <mat-panel-description>
+            Depresion case - other
+            <mat-icon>map</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>A young girl aged 19 came to us on mid September-2015..She was a shy girl .completely covered in her burkhas..
+          When i asked her what was the complain，，she looked down without respond..again when I asked she looked at her mother..and asked Mother to narrate her complain..</p>
+          <p>As soon as the mother strted narrating her complain she strted crying.. </p>
+          <p>Since a fortnight, the patient had excessive repetitive thoughts..had a strong desire to abuse God. She had misbelief of hearing voices. She felt ants are crawling on her body. She had severe burning in chest and all over body along with vomiting, breathlessness and discomfort. She also had lost 3 kg weight in this fortnight. All her complains were worsening in the evening. She was having disturbed sleep.
+          </p>
+          <p>The stage worsened, she constantly started having suicidal thoughts.
+          </p>
+          <p>Doctor's observation :</p>
+          <p>We strted with a broad spectrum anti depressant along with  mild antipsychotic med.. On her first follow up she had improved by just 30%. Slowly and gradually we increase the dose till she settled out..Now she is fine. She can pray to god now and does good tailoring work .She has also gained weight.</p>
+          <p>Initially she had a few side effects but our counselling and her patience helped her a lot. Now she is fine.this was a case of depresion with anxiety. </p>
+          
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>          
+      <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Depresion self help and doctor consultation
+          </mat-panel-title>
+          <mat-panel-description>
+            Depresion self help and doctor consultaion
+            <mat-icon>date_range</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        self help and doctor consultation
+        <img  src="../../assets/images/disorders/depression.gif" alt="depression" 
+        style="max-width: 100%; min-width: 40%;">
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">End</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+    </mat-accordion>
+        
+  </mat-expansion-panel>
+  <!-- Depression finished -->
+
+  <!--OCD-->
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        OCD
+      </mat-panel-title>
+      <mat-panel-description>
+        OCD
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            know about OCD
+          </mat-panel-title>
+          <mat-panel-description>
+            OCD disorder more information
+            <mat-icon>account_circle</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        <p>Obsessive–compulsive disorder (OCD) is an anxiety disorder characterized by intrusive thoughts that produce uneasiness, apprehension, fear, or worry, by repetitive behaviors aimed at reducing anxiety, or by a combination of such thoughts (obsessions) and behaviors (compulsions). Symptoms may include repetitive handwashing; extensive hoarding; preoccupation with sexual or aggressive impulses, or with particular religious beliefs; aversion to odd numbers; and nervous habits, such as opening a door and closing it a certain number of times before one enters or leaves a room. These symptoms can be alienating and time-consuming, and often cause severe emotional and financial distress. The acts of those who have OCD may appear paranoid and come across to others as psychotic. However, OCD sufferers generally recognize their thoughts and subsequent actions as irrational, and they may become further distressed by this realization</p>
+    
+        <mat-action-row>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Typical OCD case study
+          </mat-panel-title>
+          <mat-panel-description>
+            OCD case 
+            <mat-icon>map</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>There was a lady around 35 years of age good looking and mannered. Came to me one afternoon . Hastily siting on the chair arranging her belongings in specific manner and her first sentence was
+
+            "Doctor, I don't enjoy my life.. "
+            She was a housewife and her husband was currently in financial mess. She wanted to help him but cannot. As her entire time was consumed in washing and cleaning activities. She was lacking self confidence and was avoiding attending social functions as she was having doubts about herself....
+
+            Doctor's observation:
+            I started her treatment and counseled her about certain life style changes.. and after few follow up she came to my consulting room smile on her face and said "Now I have started attending functions and even applied for a job as her habit of excessive cleaning and washing has reduced by dramatic amount.".
+
+            This patient was having obsessive compulsive disorder.</p>
+    
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            OCD self help and doctor consultation
+          </mat-panel-title>
+          <mat-panel-description>
+            OCD self help and doctor consultaion
+            <mat-icon>date_range</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        self help and doctor consultation
+    
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">End</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+    </mat-accordion>
+        
+  </mat-expansion-panel>
+<!-- OCD finished -->
+
+  <!--Schizophrenia-->  
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Schizophrenia        
+      </mat-panel-title>
+      <mat-panel-description>
+        SPLIT PERSONALITY DISORDER
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            know about Schizophrenia
+          </mat-panel-title>
+          <mat-panel-description>
+            Schizophrenia disorder more information
+            <mat-icon>account_circle</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        <p>It is one of the psychotic mental disorders and is characterized by symptoms of thought, behavior, and social problems. The thought problems associated with schizophrenia are described as psychosis, in that the person's thinking is completely out of touch with reality at times.
+        </p><p> For example, the sufferer may hear voices or see people that are in no way present or feel like bugs are crawling on their skin when there are none.
+        </p><p> The individual with this disorder may also have disorganized speech, disorganized behavior, physically rigid or lax behavior (catatonia), significantly decreased behaviors or feelings, as well as delusions, which are ideas about themselves or others that have no basis in reality (for example, experience the paranoia of thinking others are plotting against them when they are not).</p>
+    
+        <mat-action-row>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Typical Schizophrenia case study
+          </mat-panel-title>
+          <mat-panel-description>
+            Schizophrenia case 
+            <mat-icon>map</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>This is a story of a young girl 16 years of age brought to me by her parents residing in a town 100 km near Surat, the father started narrating it this way
+
+"My daughter as such is very intelligent but since few months her communication is reduce drastically she doesn't talk , she doesn't go out of house or even do not eat or sleep properly"
+further he stated her self care is poor, gets irritated easily.. quarrel with family members on matters which never happened. Sits on the door all the time staring on certain things laughing to herself and cooks her own food. As father was of good reputation was afraid to say anything else. But that girl interrupted our conversation and told  that these things started long back when she was in early years of school. A teacher scolded her and now she is hearing that teacher talking bad about her.
+
+Doctor's observation after treatment :
+On giving medicine she responded positively ,on the very second visit I saw good amount of changes in her way of talking and her dress was also  relatively improved. After 7 the follow up her father cried out of happiness as his daughter was behaving as good as never before. I still remember his words" Doctor u saved my child's life and I'm in debt of u" this girl was suffering from schizophrenia since years and was not treated by any professional.</p>
+    
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Schizophrenia self help and doctor consultation
+          </mat-panel-title>
+          <mat-panel-description>
+            Schizophrenia self help and doctor consultaion
+            <mat-icon>date_range</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        self help and doctor consultation
+    
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">End</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+    </mat-accordion>
+        
+  </mat-expansion-panel>  
+<!-- Schizophrenia finished -->
+
+  <!---->    
+</mat-accordion>

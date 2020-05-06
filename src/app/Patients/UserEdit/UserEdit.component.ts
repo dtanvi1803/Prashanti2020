@@ -28,13 +28,14 @@ export class UserEditComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.user = data['user'];
+      console.log('ngonit this user is updated' + this.user);
     });
   }
 
   updateUser() {
     this.userService.UpdateUser(this.authService.decodedToken.nameid, this.user).subscribe(next => {
+      console.log('this is from updteduser user object' + this.user.introduction + this.user.lookingFor);
       this.alertify.success('Profile updated successfully');
-      console.log(this.user);
       this.editForm.reset(this.user);
     }, error => {
       this.alertify.error(error);

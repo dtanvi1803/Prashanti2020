@@ -1,0 +1,16 @@
+<div class="card mb-4">
+  <div class="card-body p-1">
+    <h6 class="card-title text-center mb-1"><i class="fa fa-user"></i>{{patient.name}} --> Visit Date.{{visit.visitDate}}</h6>
+    <!-- <p class="card-text text-muted text-center">{{patient.diagnosis}}</p>
+    <p class="card-text text-muted text-center">{{patient.snapshot}}</p> -->
+  </div>
+  
+    <div class="card-footer text-muted">
+    <ul class="list-inline member-icons animate text-center">
+      <li class="list-inline-item"><button class="btn btn-primary btn-sm" 
+        [routerLink]="['/lstpatients/visits/', visit.id]" ><i class="fa fa-user"></i>Detail</button></li>
+        <li class="list-inline-item"><button class="btn btn-primary btn-sm" 
+        (click) = "GetVisit(visit.id)" ><i class="fa fa-user"></i>Detail_func</button></li>        </ul>
+  </div>
+  
+</div>

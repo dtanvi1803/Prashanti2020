@@ -6,10 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ContactUs.component.css']
 })
 export class ContactUsComponent implements OnInit {
-
+  panelOpenState = false;
+  step = 10;
   constructor() { }
 
   ngOnInit() {
   }
+  setStep(index: number) {
+    this.step = index;
+  }
 
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
 }

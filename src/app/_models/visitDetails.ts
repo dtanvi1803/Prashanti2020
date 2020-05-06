@@ -1,5 +1,6 @@
 export interface VisitDetail {
     id: number;
+    patientId: number;
     visitDate: Date;
     complaints: string;
     condition: string;

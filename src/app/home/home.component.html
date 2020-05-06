@@ -1,44 +1,148 @@
-<div class="container mt-5">
-<!-- <div class="row">
-  <div class="col-md-6 col-sm-12">
-      <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FPrashantiClinic%2F&tabs=timeline&width=430&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=1430422657048237" width="430" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-  </div>
-  <div class="col-md-3 col-sm-12">
-      <div class="card">
-          <h5 class="card-header"><b>Dr. Mahesh Desai </b><span></span> <i>M.D. (Psych) D.PM</i></h5>
-          <div class="card-body">
-            <h5 class="card-title">Book Appointment</h5>
-            <p class="card-text">Plot No.2, 3rd floor, B-3 K. R. House, Anandnagar Society, Next to Paramdham, Kailashnagar, Sagrampura, Surat - 395002. Phone:+91 9537888662, +91 9537888663, +91 94288 22287,+91 94288 22288,
-                +91 261 2477677, +91 261 2460523 -99249 29508</p>
-            <p class="card-text">Matru Prayag, 4th Floor, Azad Chawk Tower Road, Valsad-396001. Phone:+91 2632 246099, +91 9428822286.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+<h6 class="mat h5"><b>Dr. Mahesh Desai </b><span></span> <i>M.D. (Psych) D.PM</i></h6>
+<div class="grid-container">
+  <!-- <h3 class="mat-h3">CALL US TO SCHEDULE AN APPOINTMENT AT +91 9537888662, +91 9537888663, +91 94288 22287,+91 94288 22288,
+    +91 261 2477677, +91 261 2460523 , 99249 29508</h3> -->
+  <mat-grid-list cols="2" [rowHeight]="(isHandset$ | async) ? '500px' : '400px'">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            <!-- <span *ngIf = "card.title == 'Card 2'">
+            <mat-icon>phone</mat-icon>
+            </span> -->
+            {{card.displayTitle}}
+            <!-- <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu> -->
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div *ngIf = "card.title == 'Card 1'">
+              <!-- <div>
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FPrashantiClinic%2F&tabs=timeline&width=430&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=1430422657048237" width="430" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+              </div>           -->
           </div>
-        </div>   -->
-      <div *ngIf="!this.registerMode" style="text-align: center">
-          <h1>Find your match</h1>
-          <p class="lead">Come on in to view your matches... All you need to do is sign up!</p>
-          <div class="text-center">
-            <button class="btn btn-primary btn-lg mr-2"(click) ="registerToggle()">Register</button>
-            <button class="btn btn-info btn-lg">Learn more</button>
-          </div>
-        </div> -->
-      <div *ngIf="this.registerMode" class="container">
-          <div class="row justify-content-center">
-            <div class="col-4">
-              <app-register (cancelRegister) = "cancelRegisterMode($event)"></app-register>
-            </div>
-          </div>
-        </div>
-      <!-- </div> -->
-      <!-- <div class="col-md-3 col-sm-12">
+          <div *ngIf = "card.title == 'Card 2'">
+            <div class="card">
+              <h5 class="card-header">Guidelines for New/Existing, Aged/Child patients</h5>
+              <div class="card-body">
+                <h5 class="card-title">Medical History Form</h5>
+                 <p class="card-text">New Patient : Download,Print and fill before visit</p> 
+                <h5 class="card-title">Medication List Form</h5>
+                  <p class="card-text">New Patient : Download,Print and fill before visit</p>
+                  <h5 class="card-title">Telemedicine Concent Form</h5>
+                  <p class="card-text">Copy in your email, fill patient details, attach above forms, recent photograph of patient before taking appointment for Telemedicine</p>
+
+                <a [routerLink]="['/guidelines/']" class="btn btn-primary">Guidelines</a>
+              </div>
+            </div>              
+          </div>          
+        <div *ngIf = "card.title == 'Card 3'">
           <div class="card">
-              <h5 class="card-header"><b>Dr. Mahesh Desai </b><span></span> <i>M.D. (Psych) D.PM</i></h5>
+            <h5 class="card-header">Monday,Tuesday,Thursday,Friday</h5>
+            Only by Appointment
+            <div class="card-body">
+              <h5 class="card-title">8:00 a.m. to 1:00 pm</h5>
+              <h5 class="card-title">3:00 a.m. to 6:00 pm</h5>
+              <p class="card-text">Plot No.2, 3rd floor, B-3 K. R. House, Anandnagar Society, Next to Paramdham, Kailashnagar, Sagrampura, Surat - 395002.</p>
+              <a href="https://goo.gl/maps/brihGiVqcuuLF9GJA" class="btn btn-primary">Find us on map</a>
+            </div>
+          </div>  
+                
+          </div>
+          <div *ngIf = "card.title == 'Card 4'">
+            <div class="card">
+              <h5 class="card-header">Wednesday</h5>
+              Only by Appointment
+              <div class="card-body">
+                <h5 class="card-title">8:00 a.m. to 1:00 pm</h5>
+                <h5 class="card-title">3:00 a.m. to 6:00 pm</h5>
+                <p class="card-text">Matru Prayag, 4th Floor, Azad Chawk Tower Road, Valsad-396001. Phone:+91 2632 246099, +91 9428822286.</p>
+                <a [routerLink]="['/aboutus/']" class="btn btn-primary">About Us</a>
+              </div>
+            </div>  
+  
+          </div>
+          <div *ngIf = "card.title == 'Card 5'">
+            <div class="card">
+              <!-- <h5 class="card-header"><b>Dr. Mahesh Desai </b><span></span> <i>M.D. (Psych) D.PM</i></h5>
               <div class="card-body">
                 <h5 class="card-title">Consulting Psychiatrist with 35+ years experience</h5>
                 <p class="card-text"></p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a [routerLink]="['/aboutus/']" class="btn btn-primary">About Us</a>
+              </div> -->
+              <div class="card-body">
+                  <ul class="card-text">
+                    <li>Management of all types of psychiatric disorders, Neuropsychiatry, Mental, psychosexual disorders</li>
+                    <li>Psychological Testing for diagnosis and plan of management</li>
+                    <li>Followup services on Sundays for those who have problem of holidays</li>
+                    <li>Indoor facility for admission and treatment of substance use disorders(addiction).</li>
+                    <li>All types of psychotherapies and counselling</li>
+                  </ul>                  
+                <a [routerLink]="['/services/']" class="btn btn-primary">Services</a>
               </div>
-            </div>          
-      </div> -->
-  <!-- </div> -->
+
+            </div>              
+          </div>  
+          <div *ngIf = "card.title == 'Card 6'">
+            <div class="card">
+              <!-- <h5 class="card-header"><b>Dr. Mahesh Desai </b><span></span> <i>M.D. (Psych) D.PM</i></h5>
+              <div class="card-body">
+                <h5 class="card-title">Consulting Psychiatrist with 35+ years experience</h5>
+                <p class="card-text"></p>
+                <a [routerLink]="['/aboutus/']" class="btn btn-primary">About Us</a>
+              </div> -->
+              <div class="card-body">
+                <mat-accordion>
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Mental Series
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        Poems by Dr. Disha Verma
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <ul>
+                      <li><a href="https://youtu.be/GroIxVgYtwU" target="_blank"> Chapeter 1- Anxiety </a></li>
+                      <li><a href="https://youtu.be/p8nwhOGurRo" target="_blank"> Chapeter 2- Depression </a> </li>
+                      <li><a href="https://youtu.be/tA-sseYvT-8" target="_blank"> Chapeter 3- Bipolar</a></li>
+                      <li><a href="https://youtu.be/YO5gRj1KmqM" target="_blank"> Chapeter 4- OCD </a></li>
+                      <li><a href="https://youtu.be/6bluS9TXrsE" target="_blank"> Chapeter 5- Schizophrenia </a></li>
+                      <li><a href="https://youtu.be/jm_A5Ca_3KM" target="_blank"> Chapeter 6- I Am Mental </a></li>
+
+                    </ul>
+                  </mat-expansion-panel>
+                  <mat-expansion-panel (opened)="panelOpenState = true"
+                                       (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Depression Booklet
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        Dr. Mahesh Desai
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    Click on image to downlaod Depression Booklet <br/>
+                    <a download="DepressionBooklet" target="_blank" href="../../assets/Information/Depression.zip">
+                      <img class="fitpic" src="../../assets/Information/depression_snapshot.JPG" alt="Depression Snapshot">
+                    </a>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </div>
+
+            </div>              
+          </div>  
+
+          <!-- <div *ngIf = "card.title == 'Card 7'">
+          </div> -->
+              
+          </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

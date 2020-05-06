@@ -1,0 +1,27 @@
+<form *ngIf="!loggedIn()" #loginForm = "ngForm" class="form-inline my-6 my-lg-0 border border-primary" (ngSubmit) ="login()">
+  <mat-form-field>
+    <input matInput class="form-control mr-sm-2" type="text" placeholder="Username" name =" username" 
+    required [(ngModel)]="model.username">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput class="form-control mr-sm-2" type="password" placeholder="Password" name="password" 
+    required [(ngModel)]="model.password">
+  </mat-form-field>
+  <button [disabled] ="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+</form>      
+
+<div *ngIf="!this.registerMode" style="text-align: center">
+  <h6>Prashanti Clinic Doctor Registration</h6>
+  <!-- <p class="lead">Hello Team member! Get Register and make the world happy !!</p> -->
+  <div class="text-center">
+    <button class="btn btn-primary btn-lg mr-2"(click) ="registerToggle()">Register</button>
+    <button class="btn btn-info btn-lg">Learn more</button>
+  </div>
+</div>
+<div *ngIf="this.registerMode" class="container">
+  <div class="row justify-content-center">
+    <!-- <div class="col-4"> -->
+      <app-register (cancelRegister) = "cancelRegisterMode($event)"></app-register>
+    <!-- </div> -->
+  </div>
+</div>                  

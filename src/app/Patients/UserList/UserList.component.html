@@ -1,7 +1,45 @@
+<div class="text-center mt-3">
+  <h4>Records {{pagination.totalItems}} Listed </h4>
+</div>
 <div class="container mt-5">
+  <form class="form-inline" #form="ngForm" (ngSubmit) ="loadUsers()" novalidate>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input type="text" class="form-control ml-1" 
+      [(ngModel)]="userParams.city"
+      style ="width: 70px;" id="city" name="city">
+    </div>
+    <div class="form-group">
+      <label for="clinicId">ClinicId</label>
+      <input type="number" class="form-control ml-1" 
+      [(ngModel)]="userParams.clinicId"
+      style ="width: 70px;" id="clinicId" name="clinicId">
+    </div>   
+    <button type="submit" class="btn btn-primary" style="margin-left:10px;">Apply Filter</button>
+    <button type="submit" class="btn btn-info" (click)="resetFilters()" style="margin-left:10px;">Reset Filter</button>
+    <div class="col">
+      <div class="btn-group float-right">
+        <button type="button" name="orderBy" class="btn btn-primary" 
+          [(ngModel)]="userParams.orderBy" btnRadio="lastActive" (click) = "loadUsers()">Last Active</button>
+        <button type="button" name="orderBy" class="btn btn-primary" 
+          [(ngModel)]="userParams.orderBy" btnRadio="created" (click) = "loadUsers()">Newest Members</button>
+      </div>
+    </div>      
+
+  </form>
+  <br/>
   <div class="row">
     <div *ngFor="let user of users" class="col-lg-2 col-md-3 col-md-6">
       <app-UserCard [user] = user></app-UserCard>
     </div>
   </div>
+</div>
+<div class="d-flex justify-content-center">
+  <pagination [boundaryLinks]="true" 
+  [totalItems] = "pagination.totalItems"
+  [itemsPerPage] = "pagination.itemsPerPage"  
+  [(ngModel)] = "pagination.currentPage"
+  (pageChanged) = "pageChanged($event)"
+  previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+</pagination>
 </div>

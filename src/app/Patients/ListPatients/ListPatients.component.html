@@ -1,7 +1,60 @@
+<div class="text-center mt-3">
+  <h2>Patients Records - {{pagination.totalItems}} found.</h2>
+</div>
 <div class="container mt-5">
+    <form class="form-inline" #form = "ngForm" (ngSubmit) = "loadUsers()" novalidate>
+      <div class="form-group">
+        <label for="clinicId">ClinicId</label>
+        <input type="number" class="form-control ml-1" 
+        [(ngModel)]="patientParams.clinicId"
+        style ="width: 70px;" id="clinicId" name="clinicId">
+      </div>   
+  
+        <div class="form-group">
+          <label for="lastVisitFromDays">From Today -</label>
+          <input type="number" class="form-control ml-1" style="width: 70px" id="lastVisitFromDays" 
+          [(ngModel)]="patientParams.lastVisitFromDays" name="lastVisitFromDays">
+        </div>
+      
+        <div class="form-group px-2">
+          <label for="lastVisitToDays">To Today +</label>
+          <input type="number" class="form-control ml-1" style="width: 70px" id="lastVisitToDays"
+            [(ngModel)]="patientParams.lastVisitToDays" name="lastVisitToDays">
+        </div>
+      
+        <!-- <div class="form-group px-2">
+          <label for="gender">Show: </label>
+          <select class="form-control ml-1" style="width: 130px" id="gender" 
+             [(ngModel)]="patientParams.gender" name="gender">
+            <option *ngFor="let gender of genderList" [value] = "gender.value">
+                {{gender.display}}
+            </option>
+          </select>
+        </div> -->
+        <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply Filters</button>
+        <button type="button" class="btn btn-info" (click) = "resetFilters()" style="margin-left:10px">Reset Filter</button>
+        <div class="col">
+          <div class="btn-group float-right">
+            <button type="button" name="orderBy" class="btn btn-primary" 
+              [(ngModel)]="patientParams.orderBy" btnRadio="lastActive" (click) = "loadUsers()">Last Active</button>
+            <button type="button" name="orderBy" class="btn btn-primary" 
+              [(ngModel)]="patientParams.orderBy" btnRadio="created" (click) = "loadUsers()">Newest Members</button>
+          </div>
+        </div>      
+      </form>
+      <br>  
   <div class="row">
     <div *ngFor="let patient of patients" class="col-lg-2 col-md-3 col-md-6">
       <app-PatientCard [patient] = patient></app-PatientCard>
     </div>
   </div>
+</div>
+<div class="d-flex justify-content-center">
+  <pagination [boundaryLinks]="true" 
+  [totalItems] = "pagination.totalItems"
+  [itemsPerPage] = "pagination.itemsPerPage"  
+  [(ngModel)] = "pagination.currentPage"
+  (pageChanged) = "pageChanged($event)"
+  previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+</pagination>
 </div>

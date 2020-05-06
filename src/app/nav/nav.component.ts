@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav',
@@ -10,9 +13,15 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
   model: any = {};
-  constructor(public authService: AuthService, 
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches)
+    );
+    
+  constructor(public authService: AuthService,
               private alertify: AlertifyService,
-             private router: Router) { }
+              private router: Router,
+              private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit() {
   }
@@ -30,7 +39,9 @@ export class NavComponent implements OnInit {
   }
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.authService.decodedToken = null;
     this.router.navigate(['/home']);
-    this.alertify.message('logged out');
+    this.alertify.message('Logged out');
   }
 }

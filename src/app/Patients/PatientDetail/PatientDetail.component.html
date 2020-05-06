@@ -33,12 +33,24 @@
             <p>{{patient.diagnosis }}</p>
             <h4>Snapshot</h4>
             <p>{{patient.snapshot }}</p>            
+            <h4>Drug Allergy</h4>
+            <p>{{patient.drugAllergy }}</p>            
+            <h4>Ongoing Medication</h4>
+            <p>{{patient.ongoingMedication }}</p>            
+            <h4>Recent Investigation</h4>
+            <p>{{patient.recentInvestigation }}</p>            
+            <h4>Remark</h4>
+            <p>{{patient.remark }}</p>            
           </tab>
           <tab heading ="Visit Details">
             <p>Visit details</p>
+            <div *ngFor="let visit of visits" class="col-lg-2 col-md-3 col-md-6">
+              <app-VisitDetailCard [visit] = visit [patient] = patient ></app-VisitDetailCard>
+            </div>            
           </tab>
           <tab heading ="Radiology Reports">
             <p>Radiology Reports</p>
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
           </tab>          
           <tab headng="Messages">
             <p>Messages</p>

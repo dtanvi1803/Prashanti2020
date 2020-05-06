@@ -39,7 +39,15 @@
                       <p>{{patient.diagnosis }}</p>
                       <h4>Snapshot</h4>
                       <textarea name="Snapshot" rows="6" class="form-control" [(ngModel)]="patient.snapshot"></textarea>
-                      <h4>Remakr</h4>
+                      <h4>Short History</h4>
+                      <textarea name="ShortHistory" rows="6" class="form-control" [(ngModel)]="patient.shortHistory"></textarea>
+                      <h4>Drug Allergy</h4>
+                      <textarea name="Drug Allergy" rows="6" class="form-control" [(ngModel)]="patient.drugAllergy"></textarea>
+                      <h4>Ongoing Medications</h4>
+                      <textarea name="Ongoing Medications" rows="6" class="form-control" [(ngModel)]="patient.ongoingMedication"></textarea>
+                      <h4>Recent Investigations</h4>
+                      <textarea name="Recent Investigations" rows="6" class="form-control" [(ngModel)]="patient.recentInvestigation"></textarea>
+                      <h4>Remark</h4>
                       <textarea name="remark" rows="6" class="form-control" [(ngModel)]="patient.remark"></textarea>
                       <h4>Location Details:</h4>
                       <div class="form-inLine">
@@ -54,9 +62,12 @@
           </tab>
           <tab heading ="Visit Details">
             <p>Visit Details</p>
+            
           </tab>
           <tab headng="Radiology Reports">
             <p>Radiology Reports</p>
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+            <app-Report-Editor [reports] = "this.patient.reports"></app-Report-Editor>
           </tab>
           <tab headng="Message">
             <p>Messages</p>

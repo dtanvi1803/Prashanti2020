@@ -1,3 +1,153 @@
-<p>
-  aboutUs works!
-</p>
+<h3 class="mat-display-3">Prashanti Clinic</h3>
+<app-About-corousel></app-About-corousel>
+<mat-accordion class="example-headers mat-typography">
+    <mat-expansion-panel class="example-panel" [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'" class="disable_ripple">
+        <mat-panel-title>
+          Dr. Mahesh Desai
+        </mat-panel-title>
+        <mat-panel-description>
+          M.D. (Psych) D.PM
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>Prashanti Clinic CEO Dr. Mahesh Desai is </p>
+      <p>
+      One of the senior most Psychiatrist in south Gujarat with 34+ years of experience.
+        </p><p>
+      He has treated approximately 200,000 patients of all types of mental illness from all over India and abroad.
+    </p><p>
+      Major area of intrest includes 
+      <ul>
+      <li><a alt="alzheimers-disease" href="https://www.brainandlife.org/disorders-a-z/disorders/app/detail/alzheimers-disease">Depression</a></li>
+
+<li><a alt="dementia" href="https://www.brainandlife.org/disorders-a-z/disorders/app/detail/dementia">Anxiety</a></li>
+
+<li><a alt="parkinsons-disease" href="https://www.brainandlife.org/disorders-a-z/disorders/app/detail/parkinsons-disease">Schizophrenea</a></li>
+
+</ul>
+
+      <!-- <mat-form-field>
+        <input matInput placeholder="First name">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput type="number" min="1" placeholder="Age">
+      </mat-form-field>
+   -->
+      <mat-action-row color="primary">
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+    <mat-expansion-panel class="example-panel" [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'" class="disable_ripple"> 
+        <mat-panel-title>
+          Our Mission
+        </mat-panel-title>
+        <mat-panel-description>
+          Tp provide top class mental health services
+          <mat-icon>flag</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>To provide top class mental health services at affordable rates to people coming from all walks of life.</p>      
+      <p>
+        To reduce stigma attached with mental illness in general population through educative programs.
+      </p>
+      <p>To develop rehabilitation facility for mentally ill.</p>
+      <p>To bridge the gap between various service provider for mental health like psychiatrist, psychologists and social workers.</p>
+      <p>To provide holistic approach to treat mental illness, that includes pharmacological and non-pharmacological interventions.</p>
+      <p>Finally no mentally ill patients should go without treatment.</p>
+        <!-- <mat-form-field>
+        <input matInput placeholder="Country">
+      </mat-form-field> -->
+  
+      <mat-action-row color="primary">
+        <button mat-button color="primary" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel class="example-panel" [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+      <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'" class="disable_ripple"> 
+        <mat-panel-title>
+          Facilities in Prashanti Clinic
+        </mat-panel-title>
+        <mat-panel-description>
+          Consultaion, Psychological Testing and Medicines
+          <mat-icon>local_pharmacy</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+   <p>
+    <ul>
+      <li>Psychological Testings</li>
+      <li>Collection center for pathology tests</li>
+      <li>Telemedicine via video conferencing </li>
+      <li>Telemedicine for registered patients on telephone 24 X 7</li>
+      <li>Inhouse Pharmacy</li>
+      <li>Pharmacy courier service of registered patients</li>
+      </ul>     
+      <!-- <mat-form-field>
+        <input matInput placeholder="Country">
+      </mat-form-field> -->
+  
+      <mat-action-row color="primary">
+        <button mat-button color="primary" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel class="example-panel" [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+      <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'" class="disable_ripple">
+        <mat-panel-title>
+          Hospitalization
+        </mat-panel-title>
+        <mat-panel-description>
+          Inpatient treatments at SOCH Hospital
+          <mat-icon> local_hospital</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header> 
+      <p>Currently senior director at SOCH Hospital, Center of complete healing.</p>
+      <p>At SOCH hospital, Indoor facility for </p>
+      <ul>
+        <li>Admission</li>
+        <li>Modified Physical Therapy</li>
+        <li>Counselling</li>
+        <li>Deaddiction and rehabilitation</li>
+        <li>Psychological Testings</li>
+        </ul>      
+        <p>SOCH Hospital, 7th Floor, Sunshine Global Hospital,Piplod, Surat</p>
+        <p>Phone: 0261-41110000</p>
+      <!-- <mat-form-field>
+        <input matInput placeholder="Date" [matDatepicker]="picker" (focus)="picker.open()" readonly>
+      </mat-form-field>
+      <mat-datepicker #picker></mat-datepicker>
+   -->
+      <mat-action-row color="primary">
+        <button mat-button color="primary" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="example-panel" [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+      <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'" class="disable_ripple">
+        <mat-panel-title>
+          Team of Prashanti Clinic
+        </mat-panel-title>
+        <mat-panel-description>
+          Expieienced and enthusiastic Team
+          <mat-icon>people</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header> 
+      <!-- <mat-form-field>
+        <input matInput placeholder="Date" [matDatepicker]="picker" (focus)="picker.open()" readonly>
+      </mat-form-field>
+      <mat-datepicker #picker></mat-datepicker>
+   -->
+      <mat-action-row color="primary">
+        <button mat-button color="primary" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">End</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+  

@@ -14,6 +14,12 @@
           <div class="card-title">{{user.username}}</div>
           <div class="card-body">
             <div>
+              <strong>UserName: </strong>
+              <p>{{user.username}}</p>              
+              <strong>Name: </strong>
+              <p>{{user.name}}</p>
+              <strong>Education: </strong>
+              <p>{{user.education}}</p>              
               <strong>Location: </strong>
               <p>{{user.city}}, {{user.country}}</p>
               <strong>Interests:</strong>
@@ -21,7 +27,7 @@
               <strong>Age:</strong>
               <p>{{user.age}}</p> 
               <strong>Last Active:</strong>
-              <p>{{user.lastActive}}</p>                            
+              <p>{{user.lastActive | timeAgo}}</p>                            
           </div>
           </div>
           <div class="card-footer">
@@ -34,12 +40,16 @@
           <tabset class="member-tabset">
             <tab heading ="Edit Profile">
                 <form #editForm="ngForm" id="editForm" (ngSubmit) = "updateUser()">
+                        <h4>Name</h4>
+                        <textarea name="Name" rows="6" class="form-control" [(ngModel)]="user.name"></textarea>
+                        <h4>Education</h4>
+                        <textarea name="Education" rows="6" class="form-control" [(ngModel)]="user.education"></textarea>
                         <h4>Introduction</h4>
-                        <textarea name="Introduction" rows="6" class="form-control" [(ngModel)]="user.introduction"></textarea>
+                        <textarea name="introduction" rows="6" class="form-control" [(ngModel)]="user.introduction"></textarea>
                         <h4>LookingFor</h4>
-                        <textarea name="Lookingfor" rows="6" class="form-control" [(ngModel)]="user.lookingFor"></textarea>
+                        <textarea name="lookingFor" rows="6" class="form-control" [(ngModel)]="user.lookingFor"></textarea>
                         <h4>Interests</h4>
-                        <textarea name="Interests" rows="6" class="form-control" [(ngModel)]="user.interests"></textarea>
+                        <textarea name="interests" rows="6" class="form-control" [(ngModel)]="user.interests"></textarea>
                         <h4>Location Details:</h4>
                         <div class="form-inLine">
                             <label for="city">City</label>

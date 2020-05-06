@@ -19,6 +19,7 @@ export class UserEditResolver implements Resolve<User> {
             return this.userService.getUser(this.authService.decodedToken.nameid)
             .pipe(catchError(error => {
                 this.alertify.error('Propblem retriving your user data');
+                console.error(error);
                 this.router.navigate(['/home']);
                 return of(null);
             }));

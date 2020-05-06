@@ -1,59 +1,104 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
-  <div class="container">
-      <a class="navbar-brand" [routerLink]="['/home']" >Prashanti Clinic</a>
-  
-      <ul class="navbar-nav mr-auto">
-        <!-- <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/home']" >Home</a>
-        </li> -->
-        <li class="nav-item" routerLinkActive="active" >
-          <a class="nav-link" [routerLink]="['/aboutus']">About Us</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/contactus']" >Contat Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Scale Yourself</a>
-        </li>
-        <li class="nav-item dropdown" routerLinkActive="active" dropdown>
-          <a class="nav-link dropdown-toggle" dropdownToggle
-            [routerLink]="['/mentalillness']" 
-            id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mental Illness</a>
-          <div class="dropdown-menu mt-3" aria-labelledby="dropdown01" *dropdownMenu>
-            <a class="dropdown-item" href="#">ADHD</a>
-            <a class="dropdown-item" href="#">Anxiety</a>
-            <a class="dropdown-item" href="#">schizophrenia</a>
-            <a class="dropdown-item" href="#">Depresion</a>
-            <a class="dropdown-item" href="#">OCD</a>
-            <a class="dropdown-item" href="#">Myths</a>
-          </div>
-        </li>
-        <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/lstpatients']" >List Patients</a>
-        </li>        
-        <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/listusers']" >List Users</a>
-        </li>        
-    </ul>
-      <div *ngIf="loggedIn()" class="dropdown" dropdown>
-        <button  class="dropdown-toggle text=light" dropdownToggle>
-          Welcome {{ authService.decodedToken?.unique_name | titlecase}}
-        </button>
-        <div class="dropdown-menu mt-3" aria-labelledby="dropdownMenuButton"  *dropdownMenu >
-          <a class="dropdown-item" [routerLink]="['/listusers/edit']" ><i class="fa fa-user"></i>Edit Profile</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" (click) = "logout()"><i class="fa fa-sign-out"></i>Logout</a>
-        </div>
-      </div>
-  
-      <form *ngIf="!loggedIn()" #loginForm = "ngForm" class="form-inline my-2 my-lg-0" (ngSubmit) ="login()">
-        <input class="form-control mr-sm-2" type="text" placeholder="Username" name =" username" 
+<mat-sidenav-container class="sidenav-container" fullscreen>
+  <mat-sidenav #drawer class="sidenav mat-typography" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialogue' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+      <button mat-button disabled>
+        <img class="jpg-icon"  src="../../assets/images/logo1.jpg" alt="Prashanti Clinic" 
+            style="max-width: 100%; min-width: 100%;">
+      </button>
+    <mat-nav-list>
+      <a mat-list-item  [routerLink]="['/']" >HOME</a>
+      <a mat-list-item  [routerLink]="['/aboutus']" routerLinkActive="active-list-item">ABOUT US</a>
+      <a mat-list-item  [routerLink]="['/services']" routerLinkActive="active-list-item">SERVICES</a>      
+      <a mat-list-item  [routerLink]="['/contactus']" routerLinkActive="active-list-item">CONTACT US</a>      
+      <a mat-list-item  [routerLink]="['/guidelines']" routerLinkActive="active-list-item">GUIDELINES</a>
+      <a mat-list-item  [routerLink]="['/mentalillness']" routerLinkActive="active-list-item">MENTAL ILLNESS</a>
+      <a mat-list-item *ngIf="!loggedIn()"  [routerLink]="['/portal']" routerLinkActive="active-list-item">Patient Portal</a>
+			      
+      <!--<mat-list style="margin-left:30px;">
+       <div class="dropdown-menu mt-3" aria-labelledby="dropdown01" *dropdownMenu> -->
+       <!--  <a mat-list-item class="dropdown-item" [routerLink]="['/mentalillness']">ADHD</a>
+        <a mat-list-item class="dropdown-item" [routerLink]="['/mentalillness']">Anxiety</a>
+        <a mat-list-item class="dropdown-item" [routerLink]="['/mentalillness']">schizophrenia</a>
+        <a mat-list-item class="dropdown-item" [routerLink]="['/mentalillness']">Depresion</a>
+        <a mat-list-item class="dropdown-item" [routerLink]="['/mentalillness']">OCD</a>
+      </mat-list> -->
+        <a mat-list-item class="dropdown-item" [routerLink]="['/myths']" routerLinkActive="active-list-item">Myths</a>
+      <!-- </div> -->
+
+      <div *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/lstpatients']" >List Patients</a>
+    </div>        
+    <div *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
+      <a class="nav-link" [routerLink]="['/listusers']" >List Users</a>
+    </div>    
+    <div *ngIf="loggedIn()">
+      <button mat-raised-button color="primary" (click) = "logout()">Logout</button>
+    </div>            
+      <!-- <form *ngIf="!loggedIn()" #loginForm = "ngForm" class="form-inline my-6 my-lg-0 border border-primary" (ngSubmit) ="login()">
+        <mat-form-field>
+          <input matInput class="form-control mr-sm-2" type="text" placeholder="Username" name =" username" 
           required [(ngModel)]="model.username">
-        <input class="form-control mr-sm-2" type="password" placeholder="Password" name="password" 
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput class="form-control mr-sm-2" type="password" placeholder="Password" name="password" 
           required [(ngModel)]="model.password">
+        </mat-form-field>
         <button [disabled] ="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
-      </form>
-  
-  </div>
-  
-</nav>
+      </form>       -->
+    </mat-nav-list>
+  </mat-sidenav> 
+   <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row *ngIf="!loggedIn()">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <div *ngIf="isHandset$ | async; else desktopDoctor" >
+          <span class="display-6">Prashanti Clinic</span>
+        </div> 
+        <ng-template #desktopDoctor><span class="display-5">Prashanti Clinic</span></ng-template>       
+        <span class="example-fill-remaining-space"></span>
+
+      <div *ngIf="isHandset$ | async; else desktopPhone" >
+        <mat-icon  class="example-icon-sm" style="font-size: 12px; width:10px;" aria-hidden="false" aria-label="phone icon">phone</mat-icon>
+        <span style="font-size: 12px;padding-right: 4px;">
+          <a style="color: white;" href="tel:+919924929508"> 99249 29508
+   
+          </a>          
+          
+        </span>  
+      </div>
+      <ng-template #desktopPhone>
+        For Appointment:+91 94288 22287, +91 261 2477677
+        <mat-icon class="example-icon" style="font-size: 22px;" aria-hidden="false" aria-label="whatsapp">phone</mat-icon>
+        <span style="font-size: 22px;padding-right: 10px;"> 99249 29508
+   
+        </span>  
+      </ng-template>
+    
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="loggedIn()">
+      <div class="dropdown" dropdown>
+        <a class="dropdown-toggle text-light" dropdownToggle >
+          Welcome {{ authService.decodedToken?.unique_name | titlecase}}
+        </a>
+        <div class="dropdown-menu mt-3" *dropdownMenu>
+          <a class="dropdown-item" [routerLink]="['listusers/edit']"><i class="fa fa-user"></i>Edit Profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click) = "logout()"><i class="fa fa-sign-out"></i> Logout</a>
+        </div>
+      </div>  
+    </mat-toolbar-row>       
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

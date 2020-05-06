@@ -1,0 +1,187 @@
+<h4 class="mat h4">Main doctor will see only those patients who have taken appoinment. </h4>
+
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+    <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'">
+      <mat-panel-title>
+        Patient Guidelines
+      </mat-panel-title>
+      <mat-panel-description>
+        Appointment Mandatory
+        <mat-icon> format_list_bulleted</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <h5>General Guidelines</h5>
+    <ul>
+      <li>Don’t plan pregnancy when on  psychotropic drugs without prior permission.</li>
+      <li>Don’t stop medications abruptly.</li>
+      <li>Click here to download <a download="PrashantiClinic_InstructionsForPatients_Gujarati" target="_blank" href="../../assets/Information/PrashantiClinic_InstructionsForPatients.jpg">Instructions for Patients in Gujarati</a></li>    
+    </ul>
+    <img class="fitPic" src="../../assets/Information/PrashantiClinic_InstructionsForPatients.jpg" alt="PrashantiClinic Instructions For Patients">    
+    <h5 class="mat-h5">Patients under care of physicians</h5>
+    <ul>
+      <li>Please show our medications to treating physicians</li>
+    </ul>
+          <mat-tab-group>
+            <mat-tab label="New Patient">
+              <mat-accordion>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'">
+                    <mat-panel-title>
+                      Child Patient
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                    <ul>
+                      <li>Parents should come and history earlier the appointment.</li>
+                      <li>Please don’t complain about anything in the presence of child.</li>
+                      <li>As far as possible children must be brought for consultation prior appointment only.</li>
+                    </ul>
+                </mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                    (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'">
+                    <mat-panel-title>
+                      Aged Patient
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <ul>
+                    <li>Relative can come earlier and give history.</li>
+                    <li>Plan appointment in advance so that waiting time can be reduced.</li>
+                    <li>Old patients living in Surat city limit and due to disability unable to come then assistant doctor can visit them to avoid inconvenience.</li>
+                    <li>Followup can be done by Telemedicine</li>
+                  </ul>    
+                </mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                    (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header [collapsedHeight]="'100px'" [expandedHeight]="'80px'">
+                    <mat-panel-title>
+                      Highly disruptive, uncooperative Patient
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p>Not taking medication</p>
+                  <p>Not taking food</p>
+                  <p>Difficult to manage at home</p>
+                  <h5>Please directly take to <b>Sunshine Global Hospital</b>.</h5>
+                  <ul>
+                    <li>Address : Dumas Rd, beside Big Bazar, Piplod, Surat, Gujarat 395007</li>
+                    <li>Open: 24 Hours.</li>
+                    <li>Phone : 0261 411 1000</li>
+                    <!-- <li>Followup can be done by Telemedicine</li> -->
+                  </ul>
+                  <h5>Dr. Mahesh Desai is associated with Sunshine Global Hospital</h5>
+                </mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                    (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header [collapsedHeight]="'120px'" [expandedHeight]="'80px'">
+                    <mat-panel-title>
+                      Working Patient
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Very busy office schedule
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p>If you have no time on workingdays then you can come on Sundays. Assistant doctors are available on Sundays</p>
+                </mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                    (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header [collapsedHeight]="'100px'" [expandedHeight]="'80px'">
+                    <mat-panel-title>
+                      For lower economic class patient Patient
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      
+                    </mat-panel-description>
+                  </mat-expansion-panel-header >
+                  <p>You can consult our assistant doctors.</p>
+                </mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                    (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header [collapsedHeight]="'100px'" [expandedHeight]="'80px'">
+                    <mat-panel-title>
+                      Outside Surat and Valsad Patient
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p>Please take morning appointments so that if pathology investigation are not done then we can done in from inhouse collection center</p>
+                  <p>Please get all current medication and prescriptions</p>
+                </mat-expansion-panel>          
+              </mat-accordion>        
+            </mat-tab>
+            <mat-tab label="Existing Patient">
+              <p>Please come with pathology reports requested at earlier consultation.</p>
+              <mat-accordion>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Outside Surat and Valsad Patient
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                    <ul>
+                      <li>Once outside surat patient is consulted personally at our clinic, future services can be provided by video conferencing. Prior appointment is must for video conferencing. The prescribed medicines via video conferencing will be courier.</li>
+                      <li>Those who ran out of medicine and had not taken prior appointment can contact our assistant doctor on the phone. Assistant doctors will guide you what to do next.</li>
+                      <li>Outside surat patient should take morning appointments. So that if pathology investigation are not done then we can done in from inhouse collection center</li>
+                      <li>Regular medicine plays vital role in healing process. We send medicines by courier.</li>
+                    </ul>
+                    </mat-expansion-panel>
+              </mat-accordion>          
+            </mat-tab>
+        </mat-tab-group>
+        
+    <mat-action-row>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+    <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'">
+      <mat-panel-title>
+        Forms for new Patient
+      </mat-panel-title>
+      <mat-panel-description>
+        Print,fill before visit
+        <mat-icon> border_color</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+
+      <p>Write four major complaints on a paper</p>
+      <p>Maintain episodes history on a paper</p>
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Previous</button>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+    <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'">
+      <mat-panel-title>
+        Concent for Telemedicine
+      </mat-panel-title>
+      <mat-panel-description>
+        Email before telemedicine appointment
+        <mat-icon>attach_file</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    Click here to dowonload<a download="Telemedicine-Informed-Consent" target="_blank" href="../../assets/Information/Telemedicine-Informed-Consent.pdf">
+      Telemedicine Informed Consent
+    </a>
+    <p>copy the content in email and fill patient details </p>
+    <p>Attach patient's recent photo, current medications, recent pathology reports, List of complaints </p>
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Previous</button>
+      <button mat-button color="primary" (click)="nextStep()">End</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+</mat-accordion>

@@ -14,8 +14,7 @@ export class PatientEditResolver implements Resolve<Patient> {
                 private alertify: AlertifyService) {}
 
         resolve(route: ActivatedRouteSnapshot): Observable<Patient> {
-            console.log('resolver id' + this.activeRoute.snapshot.toString());
-            return this.patientService.getPatient(+this.activeRoute.snapshot.params['id'])
+            return this.patientService.getPatient(route.params['id'])
             .pipe(catchError(error => {
                 this.alertify.error('Propblem retriving Patient data');
                 this.route.navigate(['/lstpatients']);

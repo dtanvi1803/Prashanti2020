@@ -1,0 +1,137 @@
+<mat-card>
+  <mat-card-header>
+  <mat-card-title>
+    Services we offer
+  </mat-card-title>
+  <mat-card-subtitle>
+    <ul>
+      <li>Management of Neuropsychiatry, Mental, psychosexual disorders</li>
+      <li>Management of all types of psychiatric disorders</li>
+      <li>Psychological Testing for diagnosis and plan of management</li>
+      <li>Laboratory for collection of blood samples</li>
+      <li>Followup services on Sundays for those who have problem of holidays</li>
+      <li>Indoor facility for admission and treatment of substance use disorders(addiction).</li>
+      <li>All types of psychotherapies and counselling</li>
+      <li>Pharmacy Store and medicine courier service</li>
+    </ul>
+  </mat-card-subtitle>
+</mat-card-header>
+<mat-card-content>
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header  [collapsedHeight]="'80px'" [expandedHeight]="'80px'">
+        <mat-panel-title>
+          General Instructions
+        </mat-panel-title>
+        <mat-panel-description>
+          For Patients and Relatives
+          <mat-icon> format_list_bulleted</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ol>
+        <li>Medicines are prescribed for all kinds of disorders only after extensively going through a patient's history and conducting a thorough analysis. </li>
+        <li>Keeping the convenience in mind, an easily accessible pharmacy is available on the venue itself. </li>
+        <li>Medicines are also sent via courier in case of emergencies. </li>
+        <li>Proper and consistent follow-ups are conducted to ensure good progress.</li>
+        <li>We do the following Intelligence tests, which helps us in tapping different abilities of a child or an adult.</li>
+      </ol>
+      <a [routerLink]="['/guidelines/']" class="btn btn-primary">Guidelines</a>
+      <mat-action-row>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'">
+        <mat-panel-title>
+          Children Psychotherapy
+        </mat-panel-title>
+        <mat-panel-description>
+          Age: Under 12 years
+          <mat-icon>face</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ol>
+      <li>Peobody Dvelopmental Mtor Sale (PDMS).From age 0 to 6</li>
+      <li>Gessel Developmental Schedules (GDS) Age 0-6 years</li>
+      <li>Vineland Social Maturity Scale (VSMS) Age</li>
+      <li>Binet Kamat Test (verbal) (BKT)</li>
+      <li>Wechsler Intelligence Scale for Children (WISC)</li>
+      <li>Achievement Test Wide Range Achievement Test-4 (Blue and Green) 4th Edition</li>
+      <li>Test of written Language- 4 Edition (TOWL-4)</li>
+      <li>Ann Arbor Learning Inventory (AALI)</li>
+      <li>Wide Range Achievement Test: expanded edition (Individual and group testing)</li>
+      <li>Children Apperception Test Indian adaptation (CAT)</li>
+      <li>Test of perception</li>
+      </ol>
+  
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+      <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'"> 
+        <mat-panel-title>
+          Adult Psychotherapy
+        </mat-panel-title>
+        <mat-panel-description>
+          Age: Above 12 years
+          <mat-icon>fingerprint</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        <ol>
+          <li>Wechsler Adult Performance Intelligence Test (WAPIS-PR) Age 16 to 44 years. With 6 sub test.</li>
+          <li>Post Graduation Brain Dysfunction Test (PGI). Neuro-Psychological Testing Battery for Brain Dysfunction. From age 20 to 69 years</li>
+          <li>Thematic Apperception Test (TAT)</li>
+          <li>Rorschach ink blot test (Hermann Rorschach)</li>
+        </ol>
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">End</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle >
+      <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'">
+        <mat-panel-title>
+          SOCH Hospital
+        </mat-panel-title>
+        <mat-panel-description>
+          Indoor Admission 
+          <mat-icon>hotel</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <h3>Dr. Mahesh Desai is associated with <b>Sunshine Global Hospital</b>.</h3>
+      <ul>
+        <li>Address : Dumas Rd, beside Big Bazar, Piplod, Surat, Gujarat 395007</li>
+        <li>Open: 24 Hours.</li>
+        <li>Phone : 0261 411 1000</li>
+      </ul>
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+      <mat-expansion-panel-header  [collapsedHeight]="'80px'" [expandedHeight]="'80px'">
+        <mat-panel-title>
+          Remote Clinic
+        </mat-panel-title>
+        <mat-panel-description>
+          Valsad
+          <mat-icon>local_hospital</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">End</button>
+      </mat-action-row>
+    </mat-expansion-panel>    
+
+  </mat-accordion>
+  
+</mat-card-content>
+</mat-card>

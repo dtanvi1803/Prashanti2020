@@ -18,6 +18,14 @@ import { PatientPreventUnsavedChanges } from './_guards/patient-prevent-unsaved-
 import { PatientEditComponent } from './Patients/PatientEdit/PatientEdit.component';
 import { PatientDetailComponent } from './Patients/PatientDetail/PatientDetail.component';
 import { PatientEditResolver } from './_Resolvers/patient-edit.resolver';
+import { MythsComponent } from './myths/myths.component';
+import { AboutGuidelinesComponent } from './aboutUs/about-guidelines/about-guidelines.component';
+import { AboutServicesComponent } from './aboutUs/about-Services/about-Services.component';
+import { PatientPortalComponent } from './PatientPortal/PatientPortal.component';
+import { VisitDetailsListComponent } from './Patients/VisitDetailsList/VisitDetailsList.component';
+import { VisitDetailCardComponent } from './Patients/VisitDetailCard/VisitDetailCard.component';
+import { VisitDetailsEditComponent } from './Patients/VisitDetailsEdit/VisitDetailsEdit.component';
+import { VisitListResolver } from './_Resolvers/visit-list.resolver';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -33,12 +41,26 @@ export const appRoutes: Routes = [
             {path: 'lstpatients', component: ListPatientsComponent, resolve: { patients: PatientListResolver}},
             {path: 'lstpatients/edit/:id', component: PatientEditComponent,
              resolve: { patients: PatientEditResolver}, canDeactivate: [PatientPreventUnsavedChanges]},
+             {
+                path: 'lstpatients/visits/:id',
+                component: VisitDetailsEditComponent
+              },
             {path: 'lstpatients/:id', component: PatientDetailComponent, resolve: { patient: PatientDetailResolver}},
+            // {    
+            //     path: 'lstpatients/visits',
+            //     component: VisitDetailsListComponent,
+            //     resolve: { users: VisitListResolver }
+            //   },
+
         ]
     },
     {path: 'home', component: HomeComponent},
     {path: 'aboutus', component: AboutUsComponent },
     {path: 'contactus', component: ContactUsComponent},
     {path: 'mentalillness', component: MentalIllnessComponent},
+    {path: 'guidelines', component: AboutGuidelinesComponent},
+    {path: 'services', component: AboutServicesComponent},
+    {path: 'myths', component: MythsComponent},
+    {path: 'portal', component: PatientPortalComponent},
     {path: '**', redirectTo: '' , pathMatch: 'full'}
 ];
