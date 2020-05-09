@@ -23,6 +23,7 @@ export interface Patient {
     ongoingMedication?: string;
     recentInvestigation?: string;
     remark?: string;
+    photoUrl:string;
     visitDetails?: VisitDetail[];
     reports?: Report[];
 }

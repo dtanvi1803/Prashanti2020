@@ -20,7 +20,7 @@ constructor(private patientService: PatientService,
         .pipe(catchError(error => {
             this.alertify.error('Propblem retriving visit data');
             console.error(error);
-            this.router.navigate(['/home']);
+            this.router.navigate(['/lstpatients']);
             return of(null);
         }));
     }

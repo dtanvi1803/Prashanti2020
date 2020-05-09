@@ -56,6 +56,8 @@ import { ReportEditorComponent} from './Patients/Report-Editor/Report-Editor.com
 import { VisitDetailsListComponent } from './Patients/VisitDetailsList/VisitDetailsList.component';
 import { VisitDetailsEditComponent } from './Patients/VisitDetailsEdit/VisitDetailsEdit.component';
 import { VisitDetailCardComponent } from './Patients/VisitDetailCard/VisitDetailCard.component';
+import { VisitListResolver } from './_Resolvers/visit-list.resolver';
+import { VisitPreventUnsavedChanges } from './_guards/visit-prevent-unsaved-changes.guard copy';
 
 
 export function tokenGetter() {
@@ -137,12 +139,14 @@ export function tokenGetter() {
       AuthGuard,
       PreventUnsavedChanges,
       PatientPreventUnsavedChanges,
+      VisitPreventUnsavedChanges,
       UserDetailResolver,
       UserListResolver,
       PatientListResolver,
       PatientDetailResolver,
       UserEditResolver,
-      PatientEditResolver
+      PatientEditResolver,
+      VisitListResolver,
    ],
    bootstrap: [
       AppComponent

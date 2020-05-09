@@ -20,11 +20,11 @@ getPatients(page?, itemsPerPage?, patientParams?): Observable<PaginatedResult<Pa
   const paginatedResult: PaginatedResult<Patient[]> = new PaginatedResult<Patient[]>();
 
   let params = new HttpParams();
-  if(page != null && itemsPerPage != null) {
+  if (page != null && itemsPerPage != null) {
     params = params.append('pageNumber', page);
     params = params.append('pageSize', itemsPerPage);
   }
-  if(patientParams != null) {
+  if (patientParams != null) {
     params = params.append('lastVisitFromDays', patientParams.lastVisitFromDays);
     params = params.append('lastVisitToDays', patientParams.lastVisitToDays);
     params = params.append('clinicId', patientParams.clinicId);
@@ -64,6 +64,6 @@ UpdateVisit(id: number, visit: VisitDetail) {
   return this.http.put(this.baseUrl + 'patients/visits/' + id, visit);
 }
 AddVisitForPatient(visit: VisitDetail) {
-  return this.http.post(this.baseUrl + 'patients/visits', visit);
+  return this.http.post(this.baseUrl + 'patients/visits/createVisit', visit);
 }
 }

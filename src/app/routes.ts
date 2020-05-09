@@ -26,6 +26,7 @@ import { VisitDetailsListComponent } from './Patients/VisitDetailsList/VisitDeta
 import { VisitDetailCardComponent } from './Patients/VisitDetailCard/VisitDetailCard.component';
 import { VisitDetailsEditComponent } from './Patients/VisitDetailsEdit/VisitDetailsEdit.component';
 import { VisitListResolver } from './_Resolvers/visit-list.resolver';
+import { VisitPreventUnsavedChanges } from './_guards/visit-prevent-unsaved-changes.guard copy';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -43,7 +44,8 @@ export const appRoutes: Routes = [
              resolve: { patients: PatientEditResolver}, canDeactivate: [PatientPreventUnsavedChanges]},
              {
                 path: 'lstpatients/visits/:id',
-                component: VisitDetailsEditComponent
+                component: VisitDetailsEditComponent,
+                resolve: {visit: VisitListResolver}, canDeactivate: [VisitPreventUnsavedChanges]
               },
             {path: 'lstpatients/:id', component: PatientDetailComponent, resolve: { patient: PatientDetailResolver}},
             // {    

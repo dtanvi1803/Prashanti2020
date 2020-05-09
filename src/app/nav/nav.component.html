@@ -85,6 +85,14 @@
     
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="loggedIn()">
+      <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
       <div class="dropdown" dropdown>
         <a class="dropdown-toggle text-light" dropdownToggle >
           Welcome {{ authService.decodedToken?.unique_name | titlecase}}

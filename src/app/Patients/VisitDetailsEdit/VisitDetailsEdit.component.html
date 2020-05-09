@@ -1,58 +1,79 @@
 <div class="row">
+  <div class="col-md-3">
+        <h4>{{patient?.name}} Visit Profile</h4>
+        <p>ContactNo : {{patient.contactNo}}, City:{{patient.city}}, {{patient.Country}}</p>
+        <p>Diagnosis: {{patient.diagnosis}}</p>
+  </div>
+  <div class="col-md-3">
+    <p>Ongoing Med : {{patient.ongoingMedication}}</p>
+    <p>Drug Allergy: {{patient.drugAllergy}}</p>
+  </div>
+  <div class="col-sm-6">
+    <!-- <img class="card-img-top img-thumbnail" src="{{'../../../../../assets/images/user.png' }}" alt="{{patient.name}}"> -->
+        <div *ngIf="editForm.dirty" class="alert alert-info">
+          <strong>Information:</strong> You have made changes. Any unsaved changes will be lost!!
+        </div>
+  </div> 
+</div>
+<div class="row">
   <div class="col">
-        <h1>{{patient?.name}} visit Profile</h1>
-    <div class="card">
-      <div class="card-title">{{visit.id}}</div>
+    <!-- <div class="card">
+      <div class="card-title"></div>
       <div class="card-body">
-        <div>
-          <!-- <strong>Complaint: </strong>
-          <p>{{visit.complaints}}</p>
-          <strong>condition :</strong>
-          <p>{{visit.condition}}</p> 
-          <strong>remark:</strong>
-          <p>{{visit.remark}}</p> 
-          <strong>Last Visit:</strong>
-          <p>{{patient?.lastVisit}}</p>  -->
+        <div> -->
           <form #editForm = "ngForm" id="editForm" (ngSubmit)="updateVisit()">
-            <h4>Visit Id</h4>
-            <input type="text" class="form-control" name="id"
-            [(ngModel)] = "visit.id">
-            <h4>Visit Date</h4>
-            <input class="form-control"
-            placeholder="Visit Date" name="visitDate"
-             type="date"
-             [(ngModel)] = "visit.visitDate"
-            bsDatepicker [bsConfig] = "bsConfig" >
-     
-         
-            <h4>Complaints</h4>
-            <textarea class="form-control" name="complaints" rows="3" 
+            <div class="form-group row">
+            <div class="col-md-12">
+              <h4>Visit Id : {{visit.id}} and Visit Date {{ visit.visitDate | date:'shortDate'}} -- {{visit.visitDate | timeAgo}}</h4>
+              <input hidden type="text" class="form-control" name="id"
+              [(ngModel)] = "visit.id">
+              <input hidden class="form-control"
+              placeholder="Visit Date" name="visitDate"
+              type="text"
+              [(ngModel)] = "visit.visitDate"
+              bsDatepicker
+              [bsConfig]=bsConfig >
+            </div>
+            <div class="col-md-6">
+              <h4>Complaints</h4>
+              <textarea class="form-control" name="complaints" rows="3" 
               [(ngModel)]="visit.complaints"></textarea>
+            </div>
+            <div class="col-md-6">
               <h4>Condition</h4>
               <textarea class="form-control" name="condition" rows="3" 
               [(ngModel)]="visit.condition"></textarea>
+            </div>
+            <div class="col-md-6">
               <h4>Prescription</h4>
               <textarea class="form-control" name="prescription" rows="3" 
               [(ngModel)]="visit.prescription"></textarea>
-
+            </div>
+            <div class="col-md-6">
               <h4>Advise</h4>
               <textarea class="form-control" name="advise" rows="3" 
               [(ngModel)]="visit.advise"></textarea>
-
+            </div>
+            <div class="col-md-6">
               <h4>Findings</h4>
               <textarea class="form-control" name="findings" rows="3" 
               [(ngModel)]="visit.findings"></textarea>
-
+            </div>
+            <div class="col-md-6">
               <h4>Remarks</h4>
               <textarea class="form-control" name="remark" rows="3" 
-              [(ngModel)]="visit.remark"></textarea>               
+              [(ngModel)]="visit.remark"></textarea>
+            </div>
+          </div>
           </form>
-          <button  Form="editForm" class="btn btn-success btn-block">Save Changes</button> 
-          <button class="btn btn-info btn-block" (click) = "ResetForm()">New</button>           
+          <button  Form="editForm" [disabled]="!editForm.dirty" class="btn btn-success btn-block">Save Changes</button> 
+          <button  Form="editForm" (click) = "createVisit()" class="btn btn-info btn-block">Add Today's VisitDetails</button>        
       </div>
-      <div class="card-footer">
+      <!-- <div class="card-footer">
 
-      </div>      
+      </div>       -->
       </div>
-    </div>
+      
+    <!-- </div>
   </div>
+  </div> -->

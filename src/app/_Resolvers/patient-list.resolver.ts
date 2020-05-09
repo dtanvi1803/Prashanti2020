@@ -13,12 +13,13 @@ import { VisitDetailCardComponent } from '../Patients/VisitDetailCard/VisitDetai
 export class PatientListResolver implements Resolve<Patient[]> {
     pageNumber = 1;
     pageSize = 5;
+    
     constructor(private patientService: PatientService,
                 private router: Router,
                 private alertify: AlertifyService) {}
 
         resolve(route: ActivatedRouteSnapshot): Observable<Patient[]> {
-            // console.log('resolver id' + route.params['id'] + '--routestring--' + route.toString());
+            console.log('resolver id patient list' + route.params['id'] + '--routestring--' + route.toString());
             return this.patientService.getPatients(this.pageNumber, this.pageSize)
             .pipe(catchError(error => {
                 this.alertify.error('Propblem retriving Patient data');
