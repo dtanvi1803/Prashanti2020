@@ -18,8 +18,6 @@
         <div class="card-footer">
           <div class="btn-group d-flex">
             <button class="btn btn-primary w-100" [routerLink]="['/lstpatients/edit/', patient.id]">Edit</button>
-            <button class="btn btn-primary w-100">VisitDetails</button>
-            <button class="btn btn-primary w-100">RadiologyReports</button>
             <button class="btn btn-secondary w-100">Message</button>
           </div>
         </div>
@@ -44,17 +42,13 @@
           </tab>
           <tab heading ="Visit Details">
             <p>Visit details</p>
-            <div *ngFor="let visit of visits" class="col-lg-2 col-md-3 col-md-6">
-              <app-VisitDetailCard [visit] = visit [patient] = patient ></app-VisitDetailCard>
-            </div>            
+              <app-VisitDetailsList [visits] = visits [patient] = patient></app-VisitDetailsList>
+              <!-- <app-VisitDetailCard [visit] = visit [patient] = patient ></app-VisitDetailCard> -->    
           </tab>
           <tab heading ="Radiology Reports">
             <p>Radiology Reports</p>
             <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
           </tab>          
-          <tab headng="Messages">
-            <p>Messages</p>
-          </tab>
         </tabset>
       </div>
     </div>

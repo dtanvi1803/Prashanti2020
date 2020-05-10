@@ -62,14 +62,16 @@
           </tab>
           <tab heading ="Visit Details">
             <p>Visit Details</p>
+            <div *ngFor="let visit of this.patient.visitDetails" >
+              <app-VisitDetailCard [visit] = visit [patient] = patient ></app-VisitDetailCard>
+            </div>            
             
           </tab>
-          <tab headng="Radiology Reports">
+          <tab heading="Radiology Reports">
             <p>Radiology Reports</p>
-            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
             <app-Report-Editor [reports] = "this.patient.reports"></app-Report-Editor>
           </tab>
-          <tab headng="Message">
+          <tab heading="Message">
             <p>Messages</p>
           </tab>          
         </tabset>

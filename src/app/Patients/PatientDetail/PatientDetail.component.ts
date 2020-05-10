@@ -13,7 +13,7 @@ import { VisitDetail } from 'src/app/_models/visitDetails';
 })
 export class PatientDetailComponent implements OnInit {
   patient: Patient;
-  visits : VisitDetail[];
+  visits: VisitDetail[];
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
   constructor(private patientService: PatientService,
@@ -25,7 +25,9 @@ export class PatientDetailComponent implements OnInit {
     this.patient = data['patient'];
     });
     console.log('patient ' + this.patient.reports.length);
-    this.visits = this.patient.visitDetails;
+    this.visits = this.patient.visitDetails.sort((a, b) => {
+      return <any>new Date(b.visitDate) - <any>new Date(a.visitDate);
+    });
     this.galleryOptions = [
       {
         width: '500px',
@@ -46,7 +48,7 @@ export class PatientDetailComponent implements OnInit {
         small: rep.url,
         medium: rep.url,
         big: rep.url
-    })
+    });
     }
     return reportUrls;
   }
