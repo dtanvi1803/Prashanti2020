@@ -2,23 +2,22 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <div class="card-title">{{patient.name}}</div>
+        <div class="card-title"><strong>{{patient.name}}</strong></div>
+        <img class="card-img-top img-thumbnail" src="{{patient.photoUrl || '../../../../../assets/images/user.png" alt="{{patient.name}}">
         <div class="card-body">
           <div>
-            <strong>Location: </strong>
-            <p>{{patient.city}}, {{patient.Country}}</p>
-            <strong>Contact No:</strong>
-            <p>{{patient.contactNo}}, {{patient.email}}</p> 
-            <strong>Age:</strong>
-            <p>{{patient.Age}} : Gender {{patient.gender}}</p> 
-            <strong>Last Visit:</strong>
-            <p>{{patient.lastVisit}}</p>                            
+            <p>Refering Dr. {{patient.referingDr}}</p>
+            <p class="text-muted"> Registered before {{patient.registeredDate | timeAgo}} days</p>     
+            <p>Age: {{patient.age}} : Gender {{patient.gender}}</p> 
+            <p>{{patient.city}}, {{patient.country}}</p>
+            <p> Contact: {{patient.contactNo}}, {{patient.email}}</p> 
+            <p class="text-muted"> Last Visit before {{patient.lastVisit | timeAgo}} days</p>                            
         </div>
         </div>
         <div class="card-footer">
           <div class="btn-group d-flex">
             <button class="btn btn-primary w-100" [routerLink]="['/lstpatients/edit/', patient.id]">Edit</button>
-            <button class="btn btn-secondary w-100">Message</button>
+            <button class="btn btn-info w-100" [routerLink]="['/lstpatients']">Back</button>
           </div>
         </div>
       </div>
@@ -26,18 +25,20 @@
     <div class="col-sm-8">
       <div class="tab-panel">
         <tabset class="member-tabset">
-          <tab heading ="About {{patient?.name}}">
-            <h4>Diagnosis</h4>
+          <tab heading ="Patient Details">
+            <h6>Diagnosis</h6>
             <p>{{patient.diagnosis }}</p>
-            <h4>Snapshot</h4>
-            <p>{{patient.snapshot }}</p>            
-            <h4>Drug Allergy</h4>
+            <h6>Snapshot</h6>
+            <p>{{patient.snapshot }}</p>
+            <h6>Short History</h6>
+            <p>{{patient.shortHistory }}</p>                 
+            <h6>Drug Allergy</h6>
             <p>{{patient.drugAllergy }}</p>            
-            <h4>Ongoing Medication</h4>
+            <h6>Ongoing Medication</h6>
             <p>{{patient.ongoingMedication }}</p>            
-            <h4>Recent Investigation</h4>
+            <h6>Recent Investigation</h6>
             <p>{{patient.recentInvestigation }}</p>            
-            <h4>Remark</h4>
+            <h6>Remark</h6>
             <p>{{patient.remark }}</p>            
           </tab>
           <tab heading ="Visit Details">
@@ -46,7 +47,16 @@
               <!-- <app-VisitDetailCard [visit] = visit [patient] = patient ></app-VisitDetailCard> -->    
           </tab>
           <tab heading ="Radiology Reports">
-            <p>Radiology Reports</p>
+            <div *ngIf="this.galleryImages.length<=0">No Reports</div>
+            <div class="boxcard">
+              <div *ngIf="this.galleryImages.length > 0" class="card-body">
+                <p>{{ this.galleryImages[this.ngxGalleryComponent.selectedIndex].description}}</p>
+                <p>Detail : {{ this.galleryImages[this.ngxGalleryComponent.selectedIndex].detail}}</p>
+                <p>Remark : {{ this.galleryImages[this.ngxGalleryComponent.selectedIndex].remark}}</p>
+                <p class="text-muted">Date Added : {{ this.galleryImages[this.ngxGalleryComponent.selectedIndex].dateAdded | timeAgo}}</p>
+              </div>
+              <button disabled class="btn w-100"><i class="fa fa-angle-double-down fa-3x"></i></button>
+            </div>
             <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
           </tab>          
         </tabset>

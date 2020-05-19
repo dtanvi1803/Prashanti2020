@@ -25,12 +25,12 @@ export class UserListComponent implements OnInit {
       this.pagination = data['users'].pagination;
     });
     this.userParams.city = this.user.city;
-    this.userParams.clinicId = this.user.clinicID;
+    this.userParams.clinicId = this.user.clinicId;
     this.userParams.orderBy = 'lastActive';
   }
   resetFilters() {
     this.userParams.city = this.user.city;
-    this.userParams.clinicId = this.user.clinicID;
+    this.userParams.clinicId = this.user.clinicId;
     this.loadUsers();
   }
   pageChanged(event: any): void {

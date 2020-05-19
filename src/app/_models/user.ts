@@ -2,7 +2,7 @@ export interface User {
     id: number;
     username: string;
     name: string;
-    clinicID: number;
+    clinicId: number;
     isAdmin: boolean;
     gender: string;
     dateOfBirth: Date;

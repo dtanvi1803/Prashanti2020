@@ -19,7 +19,7 @@ export class PatientListResolver implements Resolve<Patient[]> {
                 private alertify: AlertifyService) {}
 
         resolve(route: ActivatedRouteSnapshot): Observable<Patient[]> {
-            console.log('resolver id patient list' + route.params['id'] + '--routestring--' + route.toString());
+            // console.log('resolver id patient list' + route.params['id'] + '--routestring--' + route.toString());
             return this.patientService.getPatients(this.pageNumber, this.pageSize)
             .pipe(catchError(error => {
                 this.alertify.error('Propblem retriving Patient data');

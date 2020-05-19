@@ -21,7 +21,8 @@ import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule } fr
 
 import { MatInputModule, MatButtonModule, MatSelectModule, 
    MatRadioModule, MatCardModule, MatToolbarModule, MatSidenavModule, MatExpansionModule, MatTabsModule,
-   MatIconModule, MatListModule, MatGridListModule, MatMenuModule, MatDialogModule, MatChipsModule } from '@angular/material';
+   MatIconModule, MatListModule, MatGridListModule, MatMenuModule, MatDialogModule, MatChipsModule,
+    MatStepperModule } from '@angular/material';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 import { AboutUsComponent } from './aboutUs/aboutUs.component';
@@ -117,6 +118,7 @@ export function tokenGetter() {
       MatDialogModule,
       MatExpansionModule,
       MatChipsModule,
+      MatStepperModule,
       MatTabsModule,
       MatCarouselModule.forRoot(),
       BsDropdownModule.forRoot(),

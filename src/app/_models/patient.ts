@@ -9,10 +9,10 @@ export interface Patient {
     dateOfBirth: Date;
     clinicId: number;
     lastVisit: Date;
-    ReferingDr: string;
-    Age: number;
+    referingDr: string;
+    age: number;
     city: string,
-    Country: string,
+    country: string,
     snapshot?: string;
     email?: string;
     contactNo?: string;

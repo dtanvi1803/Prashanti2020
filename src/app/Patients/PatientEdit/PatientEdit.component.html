@@ -9,73 +9,263 @@
   </div>
   <div class="row">
     <div class="col-sm-4">
-          <h1>{{patient.name}} Profile</h1>
+          <h3>{{patient.name}}</h3>
       <div class="card">
-        <div class="card-title">{{patient.name}}</div>
-        <div class="card-body">
-          <div>
-            <strong>Location: </strong>
-            <p>{{patient.city}}, {{patient.Country}}</p>
-            <strong>Contact No:</strong>
-            <p>{{patient.contactNo}}, {{patient.email}}</p> 
-            <strong>Age:</strong>
-            <p>{{patient.Age}} : Gender {{patient.gender}}</p> 
-            <strong>Last Visit:</strong>
-            <p>{{patient.lastVisit}}</p>                            
-        </div>
-        </div>
-        <div class="card-footer">
+        <img class="card-img-top img-thumbnail" src="{{patient.photoUrl || '../../../../../assets/images/user.png" alt="{{patient.name}}">
+        <!-- <div class="card-title">{{patient.name}}</div> -->
+          <div class="card-body">
+            <div>
+              <strong>Location: </strong>
+              <p>{{patient.city}}, {{patient.country}}</p>
+              <strong>Contact No:</strong>
+              <p>{{patient.contactNo}}, {{patient.email}}</p> 
+              <strong>Age:</strong>
+              <p>{{patient.age}} : Gender {{patient.gender}}</p> 
+              <strong>Registred Date:</strong>
+              <p>{{patient.registeredDate }}  </p>             
+              <strong>Last Visit:</strong>
+              <p>{{patient.lastVisit}}</p>                            
+            </div>
+          </div>
+          <div class="card-footer">
             <button [disabled]="! editForm.dirty" form="editForm" class= "btn btn-success">Save Changes</button>
+            <button [disabled]="editForm.dirty" form="editForm" (click) ="backClicked()" class= "btn btn-info">Back</button>
+          </div>
         </div>
-      </div>
     </div>
     <div class="col-sm-8">
-      <div class="tab-panel">
-        <tabset class="member-tabset">
-          <tab heading ="Edit Profile">
+        <mat-tab-group>
+          <mat-tab label='About Patient'>
               <form #editForm="ngForm" id="editForm" (ngSubmit) = "updatePatient()">
-                      <h4>Diagnosis</h4>
-                      <textarea name="Diagnosis" rows="6" class="form-control" [(ngModel)]="patient.diagnosis"></textarea>
-                      <p>{{patient.diagnosis }}</p>
-                      <h4>Snapshot</h4>
-                      <textarea name="Snapshot" rows="6" class="form-control" [(ngModel)]="patient.snapshot"></textarea>
-                      <h4>Short History</h4>
-                      <textarea name="ShortHistory" rows="6" class="form-control" [(ngModel)]="patient.shortHistory"></textarea>
-                      <h4>Drug Allergy</h4>
-                      <textarea name="Drug Allergy" rows="6" class="form-control" [(ngModel)]="patient.drugAllergy"></textarea>
-                      <h4>Ongoing Medications</h4>
-                      <textarea name="Ongoing Medications" rows="6" class="form-control" [(ngModel)]="patient.ongoingMedication"></textarea>
-                      <h4>Recent Investigations</h4>
-                      <textarea name="Recent Investigations" rows="6" class="form-control" [(ngModel)]="patient.recentInvestigation"></textarea>
-                      <h4>Remark</h4>
-                      <textarea name="remark" rows="6" class="form-control" [(ngModel)]="patient.remark"></textarea>
-                      <h4>Location Details:</h4>
-                      <div class="form-inLine">
-                          <label for="city">City</label>
-                          <input class="form-control" type="text" name="city" [(ngModel)]="patient.city">
-                          <label for="country">Country</label>
-                          <input class="form-control" type="text" name="country" [(ngModel)]="patient.Country">
+                <div class="form-group row"> 
+                  <mat-accordion>
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                        Patient Demographics
+                      </mat-expansion-panel-header>
+                      <div class="form-group row">                          
+                      <div class="col-sm-6 col-md-3">
+                        <label class="control-label" for="id" style="margin-right:10px">Id</label>
+                        <input type="text" class="form-control" name="id"
+                        [(ngModel)]="patient.id">
                       </div>
-                      
+                      <div class="col-sm-3 col-md-3">
+                        <label class="control-label" for="clinicId" style="margin-right:10px">Clinic Id</label>
+                        <input type="text" class="form-control" name="clinicId"
+                        [(ngModel)]="patient.clinicId">
+                      </div>
+                      <div class="col-md-6">
+                        <label class="control-label" style="margin-right:10px">Gender</label>
+                        <label class="radio-inline">
+                          <input class="mr-3"  type="radio" [(ngModel)]="patient.gender" value="male" class="form-Control" name="gender">Male
+                        </label>
+                        <label class="radio-inline">
+                          <input class="mr-3" type="radio" [(ngModel)]="patient.gender" value="female" class="form-Control" name="gender">Female
+                        </label>                    
+                      </div>
+                      <div class="col-md-6">
+                        <label class="control-label" for="name" style="margin-right:10px">Name</label>
+                        <input type="text" class="form-control" name="name"
+                        [(ngModel)]="patient.name">
+                      </div>
+                      <div class="col-md-6">
+                        <h6>Date of Birt - Age {{patient.age}} Yrs</h6>
+                        <input class="form-control"
+                        placeholder="Birth Date" name="dateOfBirth"
+                        type="text" [(ngModel)]="patient.dateOfBirth"
+                        bsDatepicker
+                        [bsConfig]=bsConfig >                    
+                      </div>
+                      <div class="col-md-6">
+                        <label class="control-label" for="ReferingDr" style="margin-right:10px">Refering Dr.</label>
+                        <input type="text" class="form-control" name="referingDr"
+                        [(ngModel)]="patient.referingDr">                    
+                      </div>
+                      <div class="col-md-6">
+                        <label class="control-label" for="email" style="margin-right:10px">Email</label>
+                        <input type="text" class="form-control" name="email"
+                        [(ngModel)]="patient.email">                    
+                      </div>       
+                      <div class="col-md-6">
+                        <label class="control-label" for="contactNo" style="margin-right:10px">Contact No</label>
+                        <input type="text" class="form-control" name="contactno"
+                        [(ngModel)]="patient.contactNo">                    
+                      </div>
+                      <div class="col-md-6">
+                            <label for="city">City</label>
+                            <input class="form-control" type="text" name="city" [(ngModel)]="patient.city">
+                      </div>
+                      <div class="col-md-6">
+                            <label for="country">Country</label>
+                            <input class="form-control" type="text" name="country" [(ngModel)]="patient.country">
+                      </div>                      
+                      </div>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded] = true>
+                      <mat-expansion-panel-header>
+                        Diag and Snapshot
+                      </mat-expansion-panel-header>
+                      <div class="form-group row"> 
+                          <div class="col-md-6">
+                        <h4>Diagnosis</h4>
+                        <textarea name="Diagnosis" 
+                        rows="3" class="form-control" [(ngModel)]="patient.diagnosis"></textarea>
+
+                      </div>
+                      <div class="col-md-6">
+                        <h4>Snapshot</h4>
+                        <textarea name="Snapshot" 
+                        rows="3" class="form-control" [(ngModel)]="patient.snapshot"></textarea>
+                      </div>
+                      </div>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                        History, Drug Allergy and Current Med
+                      </mat-expansion-panel-header>   
+                      <div class="form-group row">                    
+                        <div class="col-md-6">
+                        <h4>Short History</h4>
+                        <textarea name="ShortHistory" 
+                        rows="3" class="form-control" [(ngModel)]="patient.shortHistory"></textarea>
+                      </div>
+                      <div class="col-md-6">
+                        <h4>Drug Allergy</h4>
+                        <textarea name="Drug Allergy" 
+                        rows="3" class="form-control" [(ngModel)]="patient.drugAllergy"></textarea>
+                      </div>
+                      <div class="col-md-6">
+                        <h4>Ongoing Medications</h4>
+                        <textarea name="Ongoing Medications" 
+                        rows="3" class="form-control" [(ngModel)]="patient.ongoingMedication"></textarea>
+                      </div>
+                      </div>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                        Investingation
+                      </mat-expansion-panel-header>
+                      <div class="form-group row"> 
+                          <div class="col-md-6">
+                            <h4>Recent Investigations</h4>
+                            <textarea name="Recent Investigations" 
+                            rows="3" class="form-control" [(ngModel)]="patient.recentInvestigation"></textarea>
+                        </div>
+                      <div class="col-md-6">
+                        <h4>Remark</h4>
+                        <textarea name="remark" 
+                        rows="3" class="form-control" [(ngModel)]="patient.remark"></textarea>
+                      </div>
+                      </div>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+              </div>
               </form>
-        
-          </tab>
-          <tab heading ="Visit Details">
+            </mat-tab>
+          <mat-tab label ="Visit Details">
             <p>Visit Details</p>
+            <button class="btn btn-info" (click) = "createdVisit()"><i class="fa fa-plus"></i>  Today's visit</button>
             <div *ngFor="let visit of this.patient.visitDetails" >
               <app-VisitDetailCard [visit] = visit [patient] = patient ></app-VisitDetailCard>
             </div>            
             
-          </tab>
-          <tab heading="Radiology Reports">
-            <p>Radiology Reports</p>
+          </mat-tab>
+          <mat-tab label="Radiology Reports">
             <app-Report-Editor [reports] = "this.patient.reports"></app-Report-Editor>
-          </tab>
-          <tab heading="Message">
-            <p>Messages</p>
-          </tab>          
-        </tabset>
-      </div>
+          </mat-tab>
+            <mat-tab label ="Add Photo">
+              <div class="row mt-3">
+                <div class="col-md-3">
+                    <div ng2FileDrop
+                        [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                        (fileOver)="fileOverBase($event)"
+                        [uploader]="uploader"
+                        class="card bg-faded p-3 text-center mb-3 my-drop-zone">
+                        <i class="fa fa-upload fa-3x"></i>
+                        Drop Photo here
+                    </div>
+
+                    <!-- Multiple
+                    <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/> -->
+
+                    Select File
+                    <input type="file" ng2FileSelect [uploader]="uploader" />
+                </div>
+
+                <div class="col-md-9" style="margin-bottom: 40px">
+
+                    <h3>Upload queue</h3>
+                    <p>Queue length: {{ uploader?.queue?.length }}</p>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th width="50%">Name</th>
+                            <th>Size</th>
+                            <th>Progress</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of uploader.queue">
+                            <td><strong>{{ item?.file?.name }}</strong></td>
+                            <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                            <td *ngIf="uploader.options.isHTML5">
+                                <div class="progress" style="margin-bottom: 0;">
+                                    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                            </td>
+                            <td nowrap>
+                                <button type="button" class="btn btn-success btn-xs"
+                                        (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                    <span class="glyphicon glyphicon-upload"></span> Upload
+                                </button>
+                                <button type="button" class="btn btn-warning btn-xs"
+                                        (click)="item.cancel()" [disabled]="!item.isUploading">
+                                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                </button>
+                                <button type="button" class="btn btn-danger btn-xs"
+                                        (click)="item.remove()">
+                                    <span class="glyphicon glyphicon-trash"></span> Remove
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div>
+                        <div>
+                            Queue progress:
+                            <div class="progress" style="">
+                                <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-success btn-s"
+                                (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                            <span class="glyphicon glyphicon-upload"></span> Upload all
+                        </button>
+                        <button type="button" class="btn btn-warning btn-s"
+                                (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                        </button>
+                        <button type="button" class="btn btn-danger btn-s"
+                                (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                            <span class="glyphicon glyphicon-trash"></span> Remove all
+                        </button>
+                    </div>
+                </div>
+                </div>
+            </mat-tab>
+      </mat-tab-group>
     </div>
   </div>
 </div>

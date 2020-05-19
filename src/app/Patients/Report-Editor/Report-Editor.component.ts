@@ -66,15 +66,23 @@ baseUrl = environment.apiUrl;
 
   setReportRead(report: Report) {
     this.patientService.SetReportRead(this.patient.id, report.id).subscribe(() => {
-      console.log("Successfully toggle read");
+      console.log('Successfully toggle read');
     }, error => {
       this.alertify.error(error);
     });
   }
-
+  saveReport(report: Report) {
+    this.patientService.SaveReport(this.patient.id, report.id, report).subscribe((next: Report) => {
+      console.log(JSON.stringify(next));
+      this.alertify.success('Report has been updated');
+    }, error => {
+      this.alertify.error('Failed to update Report');
+      console.log(error);
+    });
+  }
   deleteReport(id: number) {
     this.alertify.confirm('Are you sure you want to delete the report ?', () => {
-      this.patientService.deleteReport(this.patient.id,id).subscribe(() => {
+      this.patientService.deleteReport(this.patient.id, id).subscribe(() => {
         this.reports.splice(this.reports.findIndex(r => r.id === id), 1);
         this.alertify.success('Report has been deleted');
       }, error => {

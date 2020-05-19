@@ -7,6 +7,7 @@ import { PaginatedResult } from '../_models/pagination';
 import { map } from 'rxjs/operators';
 import { VisitDetail } from '../_models/visitDetails';
 import { VisitDetailCardComponent } from '../Patients/VisitDetailCard/VisitDetailCard.component';
+import { Report } from '../_models/report';
 
 
 @Injectable({
@@ -30,13 +31,14 @@ getPatients(page?, itemsPerPage?, patientParams?): Observable<PaginatedResult<Pa
     params = params.append('clinicId', patientParams.clinicId);
     params = params.append('orderBy', patientParams.orderBy);
   }
-
+  console.log('patient params in patient service' + patientParams);
   return this.http.get<Patient[]>(this.baseUrl + 'patients', { observe: 'response', params})
     .pipe(
       map(response => {
         paginatedResult.result = response.body;
         if (response.headers.get('Pagination') != null) {
           paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+          console.log('patient service' + JSON.stringify(paginatedResult.pagination));
         }
         return paginatedResult;
       })
@@ -45,11 +47,17 @@ getPatients(page?, itemsPerPage?, patientParams?): Observable<PaginatedResult<Pa
 getPatient(id: number): Observable<Patient> {
   return this.http.get<Patient>(this.baseUrl + 'patients/' + id );
 }
+createPatient() {
+  return this.http.post(this.baseUrl + 'patients/createPatient', {});
+}
 UpdatePatient(id: number, patient: Patient) {
   return this.http.put(this.baseUrl + 'patients/' + id, patient);
 }
 SetReportRead(patientId: number, id: number) {
   return this.http.put(this.baseUrl  + 'patients/' + patientId + '/reports/' + id + '/setRead', {} );
+}
+SaveReport(patientId: number, id: number, report: Report) {
+  return this.http.put(this.baseUrl  + 'patients/' + patientId + '/reports/' + id, report );
 }
 deleteReport(patientId: number, id: number) {
   return this.http.delete(this.baseUrl + 'patients/' + patientId + '/reports/' + id);
@@ -63,7 +71,7 @@ getVisit(id: number): Observable<VisitDetail> {
 UpdateVisit(id: number, visit: VisitDetail) {
   return this.http.put(this.baseUrl + 'patients/visits/' + id, visit);
 }
-AddVisitForPatient(visit: VisitDetail) {
-  return this.http.post(this.baseUrl + 'patients/visits/createVisit', visit);
+AddVisitForPatient(patId: number) {
+  return this.http.post(this.baseUrl + 'patients/visits/' + patId, {});
 }
 }

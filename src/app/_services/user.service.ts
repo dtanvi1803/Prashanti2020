@@ -27,7 +27,7 @@ constructor(private http: HttpClient) { }
       .pipe(
         map(response => {
           paginatedResult.result = response.body;
-          if (response.headers.get('Pagination') !=null) {
+          if (response.headers.get('Pagination') != null) {
             paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
           }
           return paginatedResult;
@@ -39,5 +39,8 @@ constructor(private http: HttpClient) { }
   }
   UpdateUser(id: number, user: User) {
     return this.http.put(this.baseUrl + 'users/' + id, user);
+  }
+  AddPhoto(id: number) {
+    return this.http.post(this.baseUrl + 'users/' + id, {});
   }
 }

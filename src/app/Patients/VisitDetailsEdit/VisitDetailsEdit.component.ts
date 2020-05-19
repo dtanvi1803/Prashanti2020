@@ -67,9 +67,7 @@ ResetForm() {
   this.createVisit();
 }
 createVisit() {
-  this.visit.visitDate = new Date();
-  this.visit.patientId = this.patientId;
-  this.patientService.AddVisitForPatient(this.visit).subscribe(next => {
+  this.patientService.AddVisitForPatient(this.patientId).subscribe(next => {
     this.alertify.success('Visit Added');
     this.editForm.reset(next);
     // this.editForm.reset(this.visit);

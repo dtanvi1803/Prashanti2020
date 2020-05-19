@@ -1,5 +1,6 @@
 <div class="text-center mt-3">
   <h2>Patients Records - {{pagination.totalItems}} found.</h2>
+  <button class="btn btn-info" (click) = "createPatient()"><i class="fa fa-plus"></i>  New Patient</button>
 </div>
 <div class="container mt-5">
     <form class="form-inline" #form = "ngForm" (ngSubmit) = "loadUsers()" novalidate>
@@ -35,10 +36,10 @@
         <button type="button" class="btn btn-info" (click) = "resetFilters()" style="margin-left:10px">Reset Filter</button>
         <div class="col">
           <div class="btn-group float-right">
-            <button type="button" name="orderBy" class="btn btn-primary" 
+            <button type="button" name="orderBy" ngDefaultControl class="btn btn-primary" 
               [(ngModel)]="patientParams.orderBy" btnRadio="lastActive" (click) = "loadUsers()">Last Active</button>
-            <button type="button" name="orderBy" class="btn btn-primary" 
-              [(ngModel)]="patientParams.orderBy" btnRadio="created" (click) = "loadUsers()">Newest Members</button>
+            <button type="button" name="orderBy" ngDefaultControl class="btn btn-primary" 
+              [(ngModel)]="patientParams.orderBy" btnRadio="created" (click) = "loadUsers()">Newest Patients</button>
           </div>
         </div>      
       </form>

@@ -40,17 +40,17 @@ visitToCreate: VisitDetail;
     this.loadVisits();
   }
   createdVisit() {
-    const visit1: VisitDetail =  {
-        id : 0,
-        visitDate : new Date(),
-        findings: '',
-        complaints: '',
-        condition: '',
-        advise : '',
-        prescription: '',
-        patientId : this.patient.id};
+    // const visit1: VisitDetail =  {
+    //     id : 0,
+    //     visitDate : new Date(),
+    //     findings: '',
+    //     complaints: '',
+    //     condition: '',
+    //     advise : '',
+    //     prescription: '',
+    //     patientId : this.patient.id};
 
-    this.patientService.AddVisitForPatient(visit1).subscribe((next: VisitDetail) => {
+    this.patientService.AddVisitForPatient(this.patient.id).subscribe((next: VisitDetail) => {
       this.alertify.success('Visit Added');
       this.router.navigate(['/lstpatients/visits/', next.id]);
     }, error => {
