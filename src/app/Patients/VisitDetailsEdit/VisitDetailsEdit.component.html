@@ -66,8 +66,9 @@
             </div>
           </div>
           </form>
-          <button  Form="editForm" [disabled]="!editForm.dirty" class="btn btn-success btn-block">Save Changes</button> 
-          <button  Form="editForm" (click) = "createVisit()" class="btn btn-info btn-block">Add Today's VisitDetails</button>        
+          <button  Form="editForm" [disabled]="!editForm.dirty" class="btn btn-success">Save Changes</button> 
+          <button  Form="editForm" (click) = "createVisit()" class="btn btn-info">Add Today's VisitDetails</button> 
+          <button (click)="backButton()" [disabled]="editForm.dirty" >Back</button>       
       </div>
       <!-- <div class="card-footer">
 

@@ -28,8 +28,9 @@ visitToCreate: VisitDetail;
     //   this.pagination = data['visit'].pagination;  });
   }
   loadVisits() {
-    this.patientService.getVisits(this.patient.id).subscribe(res => {
-      // this.visits = res.result;
+    this.patientService.getVisits(this.patient.id, 1, 5).subscribe(res => {
+      console.log(JSON.stringify(res));
+      this.visits = res['visit'];
       // this.pagination = res.pagination;
     }, error => {
       this.alertify.error(error);

@@ -62,8 +62,23 @@ SaveReport(patientId: number, id: number, report: Report) {
 deleteReport(patientId: number, id: number) {
   return this.http.delete(this.baseUrl + 'patients/' + patientId + '/reports/' + id);
 }
-getVisits(id: number) {
-  return this.http.get<VisitDetail[]>(this.baseUrl + 'patients/visits/' + id);
+getVisits(id: number, page?, itemsPerPage?): Observable<PaginatedResult<VisitDetail[]>> {
+  const paginatedResult: PaginatedResult<VisitDetail[]> = new PaginatedResult<VisitDetail[]>();
+  let params = new HttpParams();
+  if (page != null && itemsPerPage != null) {
+    params = params.append('pageNumber', page);
+    params = params.append('pageSize', itemsPerPage);
+  }
+  return this.http.get<VisitDetail[]>(this.baseUrl + 'patients/visits/' + id, { observe : 'response', params})
+      .pipe(
+        map(response => {
+          paginatedResult.result = response.body;
+          if(response.headers.get('Pagination') != null){
+            paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'))
+          }
+          return paginatedResult;
+        })
+      );
 }
 getVisit(id: number): Observable<VisitDetail> {
   return this.http.get<VisitDetail>(this.baseUrl + 'patients/visits/' + id);

@@ -21,8 +21,8 @@ import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule } fr
 
 import { MatInputModule, MatButtonModule, MatSelectModule, 
    MatRadioModule, MatCardModule, MatToolbarModule, MatSidenavModule, MatExpansionModule, MatTabsModule,
-   MatIconModule, MatListModule, MatGridListModule, MatMenuModule, MatDialogModule, MatChipsModule,
-    MatStepperModule } from '@angular/material';
+   MatIconModule, MatListModule, MatGridListModule, MatMenuModule, MatDatepickerModule, MatDialogModule, MatChipsModule,
+    MatStepperModule, MatNativeDateModule } from '@angular/material';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 import { AboutUsComponent } from './aboutUs/aboutUs.component';
@@ -59,6 +59,8 @@ import { VisitDetailsEditComponent } from './Patients/VisitDetailsEdit/VisitDeta
 import { VisitDetailCardComponent } from './Patients/VisitDetailCard/VisitDetailCard.component';
 import { VisitListResolver } from './_Resolvers/visit-list.resolver';
 import { VisitPreventUnsavedChanges } from './_guards/visit-prevent-unsaved-changes.guard copy';
+import { SchedulerComponent } from './Patients/Scheduler/Scheduler.component';
+
 
 
 export function tokenGetter() {
@@ -93,7 +95,8 @@ export function tokenGetter() {
       ReportEditorComponent,
       VisitDetailsListComponent,
       VisitDetailsEditComponent,
-      VisitDetailCardComponent
+      VisitDetailCardComponent,
+      SchedulerComponent
    ],
    imports: [
       BrowserModule,
@@ -107,6 +110,8 @@ export function tokenGetter() {
       MatSelectModule,
       MatRadioModule,
       MatCardModule,
+      MatDatepickerModule,
+      MatNativeDateModule,
       ReactiveFormsModule,
       LayoutModule,
       MatToolbarModule,

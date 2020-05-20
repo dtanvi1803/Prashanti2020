@@ -1,0 +1,9 @@
+<mat-form-field>
+  <input matInput [matDatepicker]="displayDate" [min]="minDate" [max] = "maxDate" [formControl]="date">
+  <mat-datepicker-toggle [for] = "displayDate" matsuffix></mat-datepicker-toggle>
+  <mat-datepicker #displayDate></mat-datepicker>
+</mat-form-field>
+<div class="calendar-wrapper">
+  <mat-calendar #calendar [(selected)]="selectedDate" (dateSelected)="dateSelected($event)">
+  </mat-calendar>
+</div>

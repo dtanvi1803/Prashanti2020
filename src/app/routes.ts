@@ -27,6 +27,7 @@ import { VisitDetailCardComponent } from './Patients/VisitDetailCard/VisitDetail
 import { VisitDetailsEditComponent } from './Patients/VisitDetailsEdit/VisitDetailsEdit.component';
 import { VisitListResolver } from './_Resolvers/visit-list.resolver';
 import { VisitPreventUnsavedChanges } from './_guards/visit-prevent-unsaved-changes.guard copy';
+import { SchedulerComponent } from './Patients/Scheduler/Scheduler.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -35,6 +36,7 @@ export const appRoutes: Routes = [
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
+            {path: 'listusers/schedule', component: SchedulerComponent},
             {path: 'listusers', component: UserListComponent, resolve: { users: UserListResolver}},
             {path: 'listusers/edit', component: UserEditComponent,
                 resolve: { user: UserEditResolver}, canDeactivate: [PreventUnsavedChanges]},

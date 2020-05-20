@@ -6,6 +6,7 @@ import { AlertifyService } from '../../_services/alertify.service';
 import { PatientService } from '../../_services/patient.service';
 import { NgForm } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-VisitDetailsEdit',
@@ -27,7 +28,7 @@ export class VisitDetailsEditComponent implements OnInit {
   }
   constructor(private route: ActivatedRoute, 
               private alertify: AlertifyService,
-              private patientService: PatientService) { }
+              private patientService: PatientService, private location: Location) { }
 
   ngOnInit() {
    //  this.visitId = +this.route.snapshot.paramMap.get('id');
@@ -41,9 +42,9 @@ export class VisitDetailsEditComponent implements OnInit {
     this.route.data.subscribe(data => {
       console.log(data);
       this.visit = data['visit'];
+      console.log('visit in data ngoinit' + JSON.stringify(this.visit));
       this.patientId = this.visit.patientId;
       this.loadPatient();
-      console.log('visit in data ngoinit' + this.visit);
     });
     this.bsConfig = {
       containerClass: 'theme-blue',
@@ -51,7 +52,7 @@ export class VisitDetailsEditComponent implements OnInit {
     };
   }
 loadVisits() {
-  this.patientService.getVisit(this.visitId).subscribe( v => {
+  this.patientService.getVisit(this.visit.id).subscribe( v => {
     this.visit = v;
     this.patientId = v.patientId;
     this.patientService.getPatient(this.patientId).subscribe( p => this.patient = p);
@@ -89,4 +90,7 @@ updateVisit() {
   });
   }
 
+backButton() {
+  this.location.back();
+}
 }
