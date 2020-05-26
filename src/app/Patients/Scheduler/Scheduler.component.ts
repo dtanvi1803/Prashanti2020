@@ -17,6 +17,7 @@ import {takeUntil} from 'rxjs/operators';
 import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import {default as _rollupMoment} from 'moment';
+import { User } from 'src/app/_models/user';
 
 const moment = _rollupMoment || _moment;
 // See the Moment.js docs for the meaning of these formats:
@@ -53,6 +54,7 @@ export const MY_FORMATS = {
 
 export class SchedulerComponent {
   @ViewChild('calendar', {static : true}) calendar: MatCalendar<_moment.Moment>;
+  user: User = JSON.parse(localStorage.getItem('user'));
 selectedDate: _moment.Moment;
   date = new FormControl(moment());
   minDate = new Date();

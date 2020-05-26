@@ -24,6 +24,7 @@ import { MatInputModule, MatButtonModule, MatSelectModule,
    MatIconModule, MatListModule, MatGridListModule, MatMenuModule, MatDatepickerModule, MatDialogModule, MatChipsModule,
     MatStepperModule, MatNativeDateModule } from '@angular/material';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 import { AboutUsComponent } from './aboutUs/aboutUs.component';
 import { ContactUsComponent } from './ContactUs/ContactUs.component';
@@ -60,6 +61,16 @@ import { VisitDetailCardComponent } from './Patients/VisitDetailCard/VisitDetail
 import { VisitListResolver } from './_Resolvers/visit-list.resolver';
 import { VisitPreventUnsavedChanges } from './_guards/visit-prevent-unsaved-changes.guard copy';
 import { SchedulerComponent } from './Patients/Scheduler/Scheduler.component';
+import { AppointmentLIstComponent } from './Patients/Scheduler/AppointmentLIst/AppointmentLIst.component';
+import { AppointmentDetailComponent } from './Patients/Scheduler/AppointmentDetail/AppointmentDetail.component';
+import { AppointmentListResolver } from './_Resolvers/appointment-list.resolver';
+import { AppointmentEditResolver } from './_Resolvers/appointment-edit.resolver';
+import { MyDateTimePickerComponent } from './MyDateTimePicker/MyDateTimePicker.component';
+import { FilterPipe } from './Patients/filter.pipe';
+import { PatientLookupComponent } from './Patients/patient-lookup/patient-lookup.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -96,7 +107,12 @@ export function tokenGetter() {
       VisitDetailsListComponent,
       VisitDetailsEditComponent,
       VisitDetailCardComponent,
-      SchedulerComponent
+      SchedulerComponent,
+      AppointmentLIstComponent,
+      AppointmentDetailComponent,
+      MyDateTimePickerComponent,
+      PatientLookupComponent,
+      FilterPipe
    ],
    imports: [
       BrowserModule,
@@ -125,6 +141,7 @@ export function tokenGetter() {
       MatChipsModule,
       MatStepperModule,
       MatTabsModule,
+      NgxMaterialTimepickerModule,
       MatCarouselModule.forRoot(),
       BsDropdownModule.forRoot(),
       BsDatepickerModule.forRoot(),
@@ -139,6 +156,9 @@ export function tokenGetter() {
             blacklistedRoutes: ['localhost:5000/api/auth']
          }
       }),
+      MatTableModule,
+      MatPaginatorModule,
+      MatSortModule,
    ],
    providers: [
       AuthService,
@@ -154,6 +174,8 @@ export function tokenGetter() {
       UserEditResolver,
       PatientEditResolver,
       VisitListResolver,
+      AppointmentListResolver,
+      AppointmentEditResolver
    ],
    bootstrap: [
       AppComponent

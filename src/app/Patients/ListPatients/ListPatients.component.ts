@@ -30,12 +30,17 @@ export class ListPatientsComponent implements OnInit {
      this.patientParams.lastVisitToDays = 1;
      this.patientParams.clinicId = this.user.clinicId;
      this.patientParams.orderBy = 'lastActive';
+     this.patientParams.filterName = '';
+     this.patientParams.filterMobile = '';
+
   }
   resetFilters() {
     this.patientParams.lastVisitFromDays = 30;
     this.patientParams.lastVisitToDays = 1;
     this.patientParams.clinicId = this.user.clinicId;
     this.patientParams.orderBy = 'lastActive';
+    this.patientParams.filterName = '';
+    this.patientParams.filterMobile = '';
     this.loadUsers();
   }
   pageChanged(event: any): void {

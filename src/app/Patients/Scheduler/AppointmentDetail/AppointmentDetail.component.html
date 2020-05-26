@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-md-6">
+    <form #editForm = "ngForm" id="editForm" (ngSubmit)="updateAppointment()">
+      <div class="col-md-6">
+        <h4>Appointment Id : {{appt.id}} and Appointment Date {{ appt.appDate | date:'shortDate'}}</h4>
+        <input hidden type="text" class="form-control" name="id"
+        [(ngModel)] = "appt.id">
+        <input hidden class="form-control"
+        placeholder="Appointment Date" name="appDate"
+        type="text"
+        [(ngModel)] = "appt.appDate"
+        bsDatepicker
+        [bsConfig]=bsConfig >
+      </div>
+      <div class="col-md-6">
+        <label>Start Time:</label>
+        {{ appt.start | date: 'long'}}
+        <input [ngxTimepicker]="startApp" 
+        [format] ="24"
+        class="form-control"
+        name="$startApp"
+        [(ngModel)]="$startApp">
+        <ngx-material-timepicker #startApp (timeSet) ="startTimeChanged($event)"></ngx-material-timepicker>  
+      </div>
+      
+      <div class="col-md-6">
+        <label>End Time</label>
+        {{ appt.end | date: 'long'}}
+
+        <input [ngxTimepicker]="endApp"
+        [format]="24"
+        class="form-control"
+        name="$endApp"
+        [value] = "$endApp"
+        [(ngModel)]="$endApp">
+        <ngx-material-timepicker #endApp (timeSet) ="endTimeChanged($event)"></ngx-material-timepicker>        
+      </div>
+
+      <div class="col-md-6">
+        <h4>Patient</h4>
+        <input type="text" name="patientId" class="form-control" [(ngModel)]="appt.patientId"> 
+      </div>
+      <div class="col-md-6">
+        <h4>Complaints</h4>
+        <textarea class="form-control" name="complaints" rows="3" 
+        [(ngModel)]="appt.complaints"></textarea>
+      </div>
+      <div class="col-md-6">
+        <h4>Condition</h4>
+        <textarea class="form-control" name="title" rows="3" 
+        [(ngModel)]="appt.title"></textarea>
+      </div>
+    </form>
+  <button  Form="editForm" [disabled]="!editForm.dirty" class="btn btn-success">Save Changes</button> 
+  <button (click)="backButton()" [disabled]="editForm.dirty" >Back</button>       
+</div>
+<div class="col-md-6">
+  <div>
+    <h4>Select Patient</h4>
+    <input [(ngModel)]="searchText" placeholder="search text goes here">
+    <button>Search</button>
+    <app-patient-lookup (searchTextName) ="searchText" (searchTextMobile) ="searchTextMobile"  *ngIf="searchText"></app-patient-lookup> 
+  </div>
+</div>
+</div>

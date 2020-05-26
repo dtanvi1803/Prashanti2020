@@ -1,9 +1,21 @@
-<mat-form-field>
-  <input matInput [matDatepicker]="displayDate" [min]="minDate" [max] = "maxDate" [formControl]="date">
-  <mat-datepicker-toggle [for] = "displayDate" matsuffix></mat-datepicker-toggle>
-  <mat-datepicker #displayDate></mat-datepicker>
-</mat-form-field>
-<div class="calendar-wrapper">
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <mat-form-field>
+        <mat-label>Date:</mat-label>
+        <input matInput [matDatepicker]="picker"  [formControl]="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>            
+    </p>
+    <button class="btn btn-primary" [routerLink]="['/listusers/schedule/'+ date.value]">Show Appointments</button>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="calendar-wrapper">
   <mat-calendar #calendar [(selected)]="selectedDate" (dateSelected)="dateSelected($event)">
   </mat-calendar>
-</div>
+</div> -->

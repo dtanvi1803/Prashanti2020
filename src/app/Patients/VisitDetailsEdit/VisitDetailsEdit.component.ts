@@ -28,7 +28,8 @@ export class VisitDetailsEditComponent implements OnInit {
   }
   constructor(private route: ActivatedRoute, 
               private alertify: AlertifyService,
-              private patientService: PatientService, private location: Location) { }
+              private patientService: PatientService,
+              private location: Location) { }
 
   ngOnInit() {
    //  this.visitId = +this.route.snapshot.paramMap.get('id');

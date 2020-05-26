@@ -1,0 +1,35 @@
+<div class="text-center mt-3">
+  <h2> {{pagination.totalItems}} Appointments</h2>  
+  <button class="btn btn-info" (click) = "createAppointment()"><i class="fa fa-plus"></i> Add New Appointment</button>
+</div>
+<div class="container mt-5">
+  <div class="row" *ngIf="appts?.length > 0">
+    <table class="table table-hover" style="cursor: pointer">
+      <tr>
+        <th style="width: 20%">Start</th>
+        <th style="width: 30%">Title</th>
+        <th style="width: 35%">Complaints</th>
+        <th style="width: 15%">Status</th>
+      </tr>
+      <tr *ngFor="let app of appts" 
+      [routerLink]="['/listusers/schedule/edit/', app.id]">
+        <td>{{app.start | date:'shortTime'}}</td>
+        <td>{{ app.title}}</td>
+        <td>{{app.complaints}}</td>
+        <td>{{app.status}}</td>
+         <td>
+        <button class="btn btn-danger" (click) = "$event.stopPropagation()" (click) = "deleteAppointment(app.id)">Delete</button>
+        </td> 
+      </tr>
+    </table>
+  </div>  
+</div>  
+<div class="d-flex justify-content-center" *ngIf="appointments?.length > 0">
+  <pagination [boundaryLinks]="true" 
+              [totalItems]="pagination.totalItems"
+              [itemsPerPage]="pagination.itemsPerPage"
+              [(ngModel)]="pagination.currentPage"
+              (pageChanged)="pageChanged($event)"
+            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+  </pagination>
+</div>
