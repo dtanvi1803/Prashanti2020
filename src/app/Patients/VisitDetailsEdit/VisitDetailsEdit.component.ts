@@ -19,6 +19,7 @@ export class VisitDetailsEditComponent implements OnInit {
   visit: VisitDetail;
   visitId: number;
   patientId: number;
+  statusOptions: string[] = ['Pending', 'InProcess', 'Cancelled', 'Completed'];
   bsConfig: Partial<BsDatepickerConfig>;
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any) {

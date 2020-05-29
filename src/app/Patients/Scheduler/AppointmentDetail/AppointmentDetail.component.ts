@@ -8,6 +8,7 @@ import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { NgForm } from '@angular/forms';
 import { Location, Time, formatDate } from '@angular/common';
 import * as moment_ from 'moment';
+import { status } from 'src/app/_models/status';
 
 const moment = moment_;
 
@@ -21,6 +22,7 @@ export class AppointmentDetailComponent implements OnInit {
   @ViewChild('editForm', { static: true }) editForm: NgForm;
 searchText = '';
 searchTextMobile = '';
+startSearch = false;
 pats: Patient[];
 $startApp = '';
 $endApp = '';
@@ -30,6 +32,7 @@ appParams: any = {};
 bsConfig: Partial<BsDatepickerConfig>;
 momentDateStart: moment_.Moment;
 momentDateEnd: moment_.Moment;
+statusOptions: string[] = ['Pending', 'InProcess', 'Cancelled', 'Completed'];
   constructor(private patientService: PatientService,
               private alertify: AlertifyService,
               private route: ActivatedRoute,
@@ -43,7 +46,10 @@ momentDateEnd: moment_.Moment;
       this.momentDateStart = moment.utc(this.appt.start);
       this.momentDateEnd = moment.utc(this.appt.end);
       this.$startApp = formatDate(this.appt.start, 'hh:mm', 'en-US');
-      this.$endApp = formatDate(this.appt.end, 'hh:mm','en-US');
+      this.$endApp = formatDate(this.appt.end, 'hh:mm', 'en-US');
+      if (this.appt.patientId > 0) {
+        this.loadPatient();
+      }
    });
   }
   updateAppointment() {
@@ -88,4 +94,11 @@ momentDateEnd: moment_.Moment;
       this.appt.end = newDate;
       console.log('appt.end' + this.appt.end);
     }
+    PatientSelectedFromLookup(pat: Patient) {
+      console.log('patientselected in appointment' + pat);
+      this.patient = pat;
+      this.appt.patientId = pat.id;
+      this.startSearch = false;
+    }
+
 }

@@ -10,6 +10,7 @@ import { VisitDetail } from 'src/app/_models/visitDetails';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from 'src/environments/environment';
 import { Location } from '@angular/common';
+import { User } from 'src/app/_models/user';
 
 @Component({
   selector: 'app-PatientEdit',
@@ -17,6 +18,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./PatientEdit.component.css']
 })
 export class PatientEditComponent implements OnInit {
+  user: User = JSON.parse(localStorage.getItem('user'));
   patient: Patient;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
@@ -74,6 +76,7 @@ export class PatientEditComponent implements OnInit {
     return imageUrls;
   }
   updatePatient() {
+    this.patient.clinicId = this.user.clinicId;
     this.patientService.UpdatePatient(+this.route.snapshot.params['id'], this.patient).subscribe(next => {
       this.alertify.success('Profile updated successfully');
       this.editForm.reset(this.patient);

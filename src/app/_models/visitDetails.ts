@@ -8,4 +8,6 @@ export interface VisitDetail {
     advise?: string;
     findings?: string;
     remark?: string;
+    status?: string;
+    charges?: number;
 }

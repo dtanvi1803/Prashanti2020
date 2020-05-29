@@ -15,16 +15,11 @@
         <!-- <div class="card-title">{{patient.name}}</div> -->
           <div class="card-body">
             <div>
-              <strong>Location: </strong>
-              <p>{{patient.city}}, {{patient.country}}</p>
-              <strong>Contact No:</strong>
-              <p>{{patient.contactNo}}, {{patient.email}}</p> 
-              <strong>Age:</strong>
-              <p>{{patient.age}} : Gender {{patient.gender}}</p> 
-              <strong>Registred Date:</strong>
-              <p>{{patient.registeredDate }}  </p>             
-              <strong>Last Visit:</strong>
-              <p>{{patient.lastVisit}}</p>                            
+              <p>Location:{{patient.city}}, {{patient.country}}</p>
+              <p>Contact Details:{{patient.contactNo}}, {{patient.email}}</p> 
+              <p>Age and Gender: {{patient.age}} Years : Gender {{patient.gender}}</p> 
+              <p>Registered Date:{{patient.registeredDate }}  </p>             
+              <p>Last Visit:{{patient.lastVisit}}</p>                            
             </div>
           </div>
           <div class="card-footer">
@@ -88,7 +83,7 @@
                       </div>       
                       <div class="col-md-6">
                         <label class="control-label" for="contactNo" style="margin-right:10px">Contact No</label>
-                        <input type="text" class="form-control" name="contactno"
+                        <input type="text" class="form-control" name="contactNo"
                         [(ngModel)]="patient.contactNo">                    
                       </div>
                       <div class="col-md-6">

@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-md-3">
-        <h4>{{patient?.name}} Visit Profile</h4>
-        <p>ContactNo : {{patient.contactNo}}, City:{{patient.city}}, {{patient.Country}}</p>
-        <p>Diagnosis: {{patient.diagnosis}}</p>
+        <h6>{{patient?.name}} Visit Profile</h6>
+        <p>ContactNo : {{patient?.contactNo}}, City:{{patient?.city}}, {{patient?.country}}</p>
+        <p>Diagnosis: {{patient?.diagnosis}}</p>
   </div>
   <div class="col-md-3">
-    <p>Ongoing Med : {{patient.ongoingMedication}}</p>
-    <p>Drug Allergy: {{patient.drugAllergy}}</p>
+    <p>Ongoing Med : {{patient?.ongoingMedication}}</p>
+    <p>Drug Allergy: {{patient?.drugAllergy}}</p>
   </div>
   <div class="col-sm-6">
     <!-- <img class="card-img-top img-thumbnail" src="{{'../../../../../assets/images/user.png' }}" alt="{{patient.name}}"> -->
@@ -24,7 +24,7 @@
           <form #editForm = "ngForm" id="editForm" (ngSubmit)="updateVisit()">
             <div class="form-group row">
             <div class="col-md-12">
-              <h4>Visit Id : {{visit.id}} and Visit Date {{ visit.visitDate | date:'shortDate'}} -- {{visit.visitDate | timeAgo}}</h4>
+              <h6>Visit Id : {{visit.id}} and Visit Date {{ visit.visitDate | date:'shortDate'}} -- {{visit.visitDate | timeAgo}}</h6>
               <input hidden type="text" class="form-control" name="id"
               [(ngModel)] = "visit.id">
               <input hidden class="form-control"
@@ -35,35 +35,45 @@
               [bsConfig]=bsConfig >
             </div>
             <div class="col-md-6">
-              <h4>Complaints</h4>
+              <h6>Complaints</h6>
               <textarea class="form-control" name="complaints" rows="3" 
               [(ngModel)]="visit.complaints"></textarea>
             </div>
             <div class="col-md-6">
-              <h4>Condition</h4>
+              <h6>Condition</h6>
               <textarea class="form-control" name="condition" rows="3" 
               [(ngModel)]="visit.condition"></textarea>
             </div>
             <div class="col-md-6">
-              <h4>Prescription</h4>
+              <h6>Prescription</h6>
               <textarea class="form-control" name="prescription" rows="3" 
               [(ngModel)]="visit.prescription"></textarea>
             </div>
             <div class="col-md-6">
-              <h4>Advise</h4>
+              <h6>Advise</h6>
               <textarea class="form-control" name="advise" rows="3" 
               [(ngModel)]="visit.advise"></textarea>
             </div>
             <div class="col-md-6">
-              <h4>Findings</h4>
+              <h6>Findings</h6>
               <textarea class="form-control" name="findings" rows="3" 
               [(ngModel)]="visit.findings"></textarea>
             </div>
             <div class="col-md-6">
-              <h4>Remarks</h4>
+              <h6>Remarks</h6>
               <textarea class="form-control" name="remark" rows="3" 
               [(ngModel)]="visit.remark"></textarea>
             </div>
+            <div class="col-md-6">
+              <h6>Status</h6> {{visit.status}}
+              <select name="status" [(ngModel)]="visit.status">
+                <option class="form-control" *ngFor="let s of statusOptions" [value]="s" >{{s}}</option>
+            </select>
+            </div>
+            <div class="col-md-6">
+              <h6>Charge</h6>
+                <input type="number" class="form=control" name="charges" [(ngModel)]="visit.charges">
+            </div>                  
           </div>
           </form>
           <button  Form="editForm" [disabled]="!editForm.dirty" class="btn btn-success">Save Changes</button> 

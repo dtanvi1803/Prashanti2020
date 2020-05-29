@@ -61,11 +61,11 @@ export class PatientLookupDataSource extends DataSource<Patient> {
   loadPatients(filterName: string, filterMobile: string, sortDirection = 'asc',
                pageIndex = 1, pageSize= '3') {
 
-    this.patientParams.lastVisitFromDays = 2000;
-    this.patientParams.lastVisitToDays = 1;
+    this.patientParams.lastVisitFromDays = 0;
+    this.patientParams.lastVisitToDays = 0;
     this.patientParams.clinicId = this.user.clinicId;
     this.patientParams.orderBy = 'lastActive';
-    this.patientParams.filterName = filterName
+    this.patientParams.filterName = filterName;
     this.patientParams.filterMobile = filterMobile;
     console.log('in load patients ' + JSON.stringify(this.patientParams));
     this.patientService.getPatients(pageIndex, pageSize, this.patientParams)
@@ -90,7 +90,7 @@ export class PatientLookupDataSource extends DataSource<Patient> {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
         case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'contactNo': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }
     });

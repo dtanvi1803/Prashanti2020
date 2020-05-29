@@ -1,8 +1,9 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <form #editForm = "ngForm" id="editForm" (ngSubmit)="updateAppointment()">
-      <div class="col-md-6">
-        <h4>Appointment Id : {{appt.id}} and Appointment Date {{ appt.appDate | date:'shortDate'}}</h4>
+      <div class="col-md-12">
+        <h4>Appointment Date {{ appt.appDate | date:'shortDate'}}</h4>
+        <p class="text-muted">Appointment Id : {{appt.id}}</p>
         <input hidden type="text" class="form-control" name="id"
         [(ngModel)] = "appt.id">
         <input hidden class="form-control"
@@ -13,53 +14,60 @@
         [bsConfig]=bsConfig >
       </div>
       <div class="col-md-6">
-        <label>Start Time:</label>
-        {{ appt.start | date: 'long'}}
+        <h4>Start Time:</h4>
         <input [ngxTimepicker]="startApp" 
         [format] ="24"
         class="form-control"
         name="$startApp"
         [(ngModel)]="$startApp">
         <ngx-material-timepicker #startApp (timeSet) ="startTimeChanged($event)"></ngx-material-timepicker>  
+        <!-- <p class="text-muted">{{ appt.start | date: 'long'}}</p> -->
       </div>
       
       <div class="col-md-6">
-        <label>End Time</label>
-        {{ appt.end | date: 'long'}}
-
+        <h4>End Time</h4>
         <input [ngxTimepicker]="endApp"
         [format]="24"
         class="form-control"
         name="$endApp"
         [value] = "$endApp"
         [(ngModel)]="$endApp">
-        <ngx-material-timepicker #endApp (timeSet) ="endTimeChanged($event)"></ngx-material-timepicker>        
+        <ngx-material-timepicker #endApp (timeSet) ="endTimeChanged($event)"></ngx-material-timepicker>
+        <!-- <p class="text-muted">{{ appt.end | date: 'long'}}</p> -->
+      </div>
+      <div class="col-md-12">
+        <h4>Patient</h4>
+        <input type="text" name="patientId" class="form-control" [(ngModel)]="appt.patientId">
+        <app-PatientCard *ngIf ="appt.patientId > 0" [patient] = patient ></app-PatientCard>
+        <div *ngIf ="appt.patientId == 0"> 
+          <h4>Select Patient</h4>
+          <form id="search-form" name="search">
+          <input type="text" name="search" [(ngModel)]="searchText" placeholder="search by Name"> <br>
+          <input type="number" name="search" [(ngModel)]="searchTextMobile" placeholder="search by ContactNo">
+          <button name="search" (click) = "startSearch = true">Search</button>
+        </form>
+          <app-patient-lookup [searchTextName] ="searchText" [searchTextMobile] ="searchTextMobile" (selectedPatient) = "PatientSelectedFromLookup($event)" *ngIf="(searchText || searchTextMobile) && startSearch"></app-patient-lookup> 
+        </div>
       </div>
 
-      <div class="col-md-6">
-        <h4>Patient</h4>
-        <input type="text" name="patientId" class="form-control" [(ngModel)]="appt.patientId"> 
-      </div>
-      <div class="col-md-6">
+      <div class="col-md-12">
         <h4>Complaints</h4>
         <textarea class="form-control" name="complaints" rows="3" 
         [(ngModel)]="appt.complaints"></textarea>
       </div>
-      <div class="col-md-6">
-        <h4>Condition</h4>
+      <div class="col-md-12">
+        <h4>Title</h4>
         <textarea class="form-control" name="title" rows="3" 
         [(ngModel)]="appt.title"></textarea>
+      </div>
+      <div class="col-md-12">
+        <h4>Status</h4> {{appt.status}}
+        <select name="status" [(ngModel)]="appt.status">
+          <option class="form-control" *ngFor="let s of statusOptions" [value]="s" >{{s}}</option>
+      </select>
       </div>
     </form>
   <button  Form="editForm" [disabled]="!editForm.dirty" class="btn btn-success">Save Changes</button> 
   <button (click)="backButton()" [disabled]="editForm.dirty" >Back</button>       
-</div>
-<div class="col-md-6">
-  <div>
-    <h4>Select Patient</h4>
-    <input [(ngModel)]="searchText" placeholder="search text goes here">
-    <button>Search</button>
-    <app-patient-lookup (searchTextName) ="searchText" (searchTextMobile) ="searchTextMobile"  *ngIf="searchText"></app-patient-lookup> 
-  </div>
 </div>
 </div>

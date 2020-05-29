@@ -37,7 +37,7 @@ export class MyDateTimePickerComponent implements OnInit {
 
   public momentDate: moment_.Moment;
   public config: DateConfig;
-  constructor(private adapter : DateAdapter<any>) { }
+  constructor(private adapter: DateAdapter<any>) { }
 
   ngOnInit() {
 

@@ -1,8 +1,11 @@
 <div class="card mb-4">
   <div class="card-body p-1">
-    <h6 class="card-title text-center mb-1"><i class="fa fa-user"></i>{{patient.name}} --> Dr.{{patient.ReferingDr}}</h6>
-    <!-- <p class="card-text text-muted text-center">{{patient.diagnosis}}</p>
-    <p class="card-text text-muted text-center">{{patient.snapshot}}</p> -->
+    <h6 class="card-title text-center mb-1">
+      <i class="fa fa-user"></i>{{patient.name}} --> Dr.{{patient.referingDr}}</h6>
+      <p class="text-muted">age: {{patient.age}}, Gender: {{patient.gender}}, city: {{patient.city}} </p>
+      <p class="card-text text-muted text-center">{{patient.contactNo}}</p>
+     <p class="text-muted">Last Visit:{{ patient.lastVisit | timeAgo}}</p>
+    
   </div>
     <div class="card-footer text-muted">
     <ul class="list-inline member-icons animate text-center">
