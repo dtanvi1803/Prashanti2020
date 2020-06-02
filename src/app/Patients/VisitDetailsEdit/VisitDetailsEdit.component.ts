@@ -63,23 +63,29 @@ loadVisits() {
 loadPatient() {
   this.patientService.getPatient(this.patientId).subscribe( p => this.patient = p);
 }
-ResetForm() {
-  // this.visit = Object.assign({}, this.editForm.value);
-  this.editForm.reset();
-  this.visit.id = 0;
-  this.createVisit();
-}
-createVisit() {
-  this.patientService.AddVisitForPatient(this.patientId).subscribe(next => {
-    this.alertify.success('Visit Added');
-    this.editForm.reset(next);
-    // this.editForm.reset(this.visit);
-  }, error => {
-    this.alertify.error(error);
-    console.error(error);
-  });
+printReceipt() {
 
 }
+printPrescription() {
+
+}
+// ResetForm() {
+//   // this.visit = Object.assign({}, this.editForm.value);
+//   this.editForm.reset();
+//   this.visit.id = 0;
+//   this.createVisit();
+// }
+// createVisit() {
+//   this.patientService.AddVisitForPatient(this.patientId).subscribe(next => {
+//     this.alertify.success('Visit Added');
+//     this.editForm.reset(next);
+//     // this.editForm.reset(this.visit);
+//   }, error => {
+//     this.alertify.error(error);
+//     console.error(error);
+//   });
+
+// }
 updateVisit() {
   console.log('going to update rec');
   this.patientService.UpdateVisit(this.visit.id, this.visit).subscribe(next => {
