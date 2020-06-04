@@ -78,7 +78,6 @@ export function tokenGetter() {
 @NgModule({
    declarations: [
       AppComponent,
-      MaterialModule,
       TimeAgoPipe,
       ValueComponent,
       NavComponent,
@@ -116,6 +115,7 @@ export function tokenGetter() {
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      MaterialModule,
       ReactiveFormsModule,
       ReactiveFormsModule,
       LayoutModule,

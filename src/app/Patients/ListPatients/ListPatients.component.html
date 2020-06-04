@@ -3,8 +3,9 @@
   <button class="btn btn-info" (click) = "createPatient()"><i class="fa fa-plus"></i>  New Patient</button>
 </div>
 <div class="container mt-5">
-    <form class="form-inline" #form = "ngForm" (ngSubmit) = "loadUsers()" novalidate>
-      <div class="form-group">
+  <button class="btn btn-secondary" (click) ="showFilters = !showFilters">Show/Hide Filters</button>
+    <form *ngIf="showFilters" class="form-inline" #form = "ngForm" (ngSubmit) = "loadUsers()" novalidate>
+      <div class="form-group" *ngIf="user.isAdmin">
         <label for="clinicId">ClinicId</label>
         <input type="number" class="form-control ml-1" 
         [(ngModel)]="patientParams.clinicId"
@@ -24,12 +25,12 @@
         </div>
         <div class="form-group px-2">
           <label for="filterName">Name :</label>
-          <input type="text" class="form-control ml-1" style="width: 70px" id="filterName"
+          <input type="text" class="form-control ml-1" style="width: 140px" id="filterName" placeholder="Search by name starting from"
             [(ngModel)]="patientParams.filterName" name="filterName">
         </div>
         <div class="form-group px-2">
           <label for="filterMobile">Mobile :</label>
-          <input type="text" class="form-control ml-1" style="width: 70px" id="filterMobile"
+          <input type="text" class="form-control ml-1" style="width: 140px" id="filterMobile" placeholder="Search by mobile starting from"
             [(ngModel)]="patientParams.filterMobile" name="filterMobile">
         </div>        
         <!-- <div class="form-group px-2">
@@ -41,24 +42,46 @@
             </option>
           </select>
         </div> -->
-        <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply Filters</button>
-        <button type="button" class="btn btn-info" (click) = "resetFilters()" style="margin-left:10px">Reset Filter</button>
+        <button type="submit" class="btn btn-primary btn-sm" style="margin-left:10px">Apply Filters</button>
+        <button type="button" class="btn btn-info btn-sm" (click) = "resetFilters()" style="margin-left:2px">Reset Filter</button>
         <div class="col">
           <div class="btn-group float-right">
-            <button type="button" name="orderBy" ngDefaultControl class="btn btn-primary" 
+            <button type="button" name="orderBy" ngDefaultControl class="btn btn-info btn-sm" 
               [(ngModel)]="patientParams.orderBy" btnRadio="lastActive" (click) = "loadUsers()">Last Active</button>
-            <button type="button" name="orderBy" ngDefaultControl class="btn btn-primary" 
+            <button type="button" name="orderBy" ngDefaultControl class="btn btn-info btn-sm" 
               [(ngModel)]="patientParams.orderBy" btnRadio="created" (click) = "loadUsers()">Newest Patients</button>
           </div>
         </div>      
       </form>
       <br>  
-  <div class="row">
-    <div *ngFor="let patient of patients" class="col-lg-2 col-md-3 col-md-6">
-      <app-PatientCard [patient] = patient></app-PatientCard>
-    </div>
+  <div class="row" *ngIf="patients.length == 0">
+    <h3>No Patients</h3>
   </div>
-</div>
+  <div class="row" *ngIf="patients.length > 0">
+    <table class="table table-hover" style="cursor: pointer">
+      <tr>
+        <th style="width: 30%">Name</th>
+        <th style="width: 20%">Age</th>
+        <th style="width: 20%">Contact No</th>
+        <th style="width: 20%">Last Visit</th>
+        <th style="width: 10%"></th>
+      </tr>
+      <tr *ngFor="let pat of patients" [ngClass] = "{'highlight' : pat.id == selectedPatId}" >
+        <td (mouseover)= "toolTip =getToolTipData(pat.id, pat.shortHistory,pat.ongoingMedication, pat.diagnosis, pat.recentInvestigation)" 
+        [matTooltip] = toolTip
+        [matTooltipClass]="'multiline-tooltip'"
+        >{{pat.name}}</td>
+        <td>{{ pat.age}} Years, {{ pat.gender}}</td>
+        <td>{{ pat.contactNo }}</td>
+        <td>{{pat.lastVisit | timeAgo}}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" 
+        [routerLink]="['/lstpatients/', pat.id]">Detail</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
 <div class="d-flex justify-content-center">
   <pagination [boundaryLinks]="true" 
   [totalItems] = "pagination.totalItems"

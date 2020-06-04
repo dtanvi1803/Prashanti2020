@@ -1,0 +1,7 @@
+.multiline-tooltip{
+    white-space: pre-line !important;
+  }
+table tr.highlight {
+    background-color: skyblue !important;
+    color: #ffffff;
+}

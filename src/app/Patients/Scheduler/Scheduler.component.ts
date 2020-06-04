@@ -4,7 +4,8 @@ import {
   Component,
   Inject,
   OnDestroy,
-  ViewChild
+  ViewChild,
+  OnInit
 } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
@@ -18,6 +19,9 @@ import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import {default as _rollupMoment} from 'moment';
 import { User } from 'src/app/_models/user';
+import { Appointment } from 'src/app/_models/appointment';
+import { Pagination } from 'src/app/_models/pagination';
+import { ActivatedRoute } from '@angular/router';
 
 const moment = _rollupMoment || _moment;
 // See the Moment.js docs for the meaning of these formats:
@@ -52,7 +56,7 @@ export const MY_FORMATS = {
   ],
 })
 
-export class SchedulerComponent {
+export class SchedulerComponent implements OnInit {
   @ViewChild('calendar', {static : true}) calendar: MatCalendar<_moment.Moment>;
   user: User = JSON.parse(localStorage.getItem('user'));
 selectedDate: _moment.Moment;
@@ -60,7 +64,10 @@ selectedDate: _moment.Moment;
   minDate = new Date();
   maxDate = new Date(new Date().getTime() + 180 * 24 * 60 * 60 * 1000);
   displayDate = this.minDate;
+
   constructor() {}
+ngOnInit() {
+}
   dateSelected(value: _moment.Moment) {
     alert(value);
   }

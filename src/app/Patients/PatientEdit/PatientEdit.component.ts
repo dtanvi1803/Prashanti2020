@@ -105,7 +105,7 @@ export class PatientEditComponent implements OnInit {
     this.uploader.onAfterAddingFile = (file) => {file.withCredentials = false; };
     this.uploader.onSuccessItem = (item, response, status, headers) => {
       if (response) {
-        this.patient.photoUrl = item.url;
+        this.patient.photoUrl = response;
       }
     };
     this.uploader.onWhenAddingFileFailed = () => {console.log('on when adding failed fired')};

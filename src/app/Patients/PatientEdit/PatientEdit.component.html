@@ -11,7 +11,7 @@
     <div class="col-sm-4">
           <h3>{{patient.name}}</h3>
       <div class="card">
-        <img class="card-img-top img-thumbnail" src="{{patient.photoUrl || '../../../../../assets/images/user.png" alt="{{patient.name}}">
+        <img class="card-img-top img-thumbnail" src={{patient.photoUrl}}  alt={{patient.name}}>
         <!-- <div class="card-title">{{patient.name}}</div> -->
           <div class="card-body">
             <div>
@@ -24,7 +24,7 @@
           </div>
           <div class="card-footer">
             <button [disabled]="! editForm.dirty" form="editForm" class= "btn btn-success">Save Changes</button>
-            <button [disabled]="editForm.dirty" form="editForm" (click) ="backClicked()" class= "btn btn-info">Back</button>
+            <button [disabled]="editForm.dirty"  (click) ="backClicked()" class= "btn btn-info">Back</button>
           </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
               <form #editForm="ngForm" id="editForm" (ngSubmit) = "updatePatient()">
                 <div class="form-group row"> 
                   <mat-accordion>
-                    <mat-expansion-panel>
+                    <mat-expansion-panel [expanded] = patient.contactNo>
                       <mat-expansion-panel-header>
                         Patient Demographics
                       </mat-expansion-panel-header>

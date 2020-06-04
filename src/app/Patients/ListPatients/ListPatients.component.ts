@@ -16,6 +16,9 @@ export class ListPatientsComponent implements OnInit {
   pagination: Pagination;
   user: User = JSON.parse(localStorage.getItem('user'));
   patientParams: any = {};
+  showFilters = false;
+  toolTip;
+  selectedPatId;
   constructor(private patientService: PatientService,
               private alertify: AlertifyService,
               private route: ActivatedRoute,
@@ -62,5 +65,22 @@ export class ListPatientsComponent implements OnInit {
       this.alertify.success('Patient Added');
       this.router.navigate(['/lstpatients/edit', next.id]);
     });
+  }
+  getToolTipData(patId: number, patShorHistory: string, patOngoingMed: string, patDiag: string, patInvest: string): string {
+    const tooltip = [];
+    this.selectedPatId = patId;
+    if (patShorHistory) {
+      tooltip.push('Short History :-- ' + patShorHistory) ;
+    }
+    if (patOngoingMed) {
+      tooltip.push('On going Meds :--' + patOngoingMed);
+    }
+    if (patInvest) {
+      tooltip.push('Recent Investigation :--' + patInvest);
+    }
+    if (patDiag) {
+      tooltip.push('Diagnosis :--' + patDiag);
+    }
+    return(tooltip.join('\n'));
   }
 }

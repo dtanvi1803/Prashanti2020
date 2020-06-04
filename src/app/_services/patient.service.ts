@@ -21,7 +21,6 @@ constructor(private http: HttpClient) { }
 
 getPatients(page?, itemsPerPage?, patientParams?): Observable<PaginatedResult<Patient[]>> {
   const paginatedResult: PaginatedResult<Patient[]> = new PaginatedResult<Patient[]>();
-console.log('patient service patientparams as argument '+ JSON.stringify(patientParams));
   let params = new HttpParams();
 
   if (page != null && itemsPerPage != null) {
@@ -37,14 +36,12 @@ console.log('patient service patientparams as argument '+ JSON.stringify(patient
     params = params.append('orderBy', patientParams.orderBy);
 
   }
-  console.log('patient params in patient service' + JSON.stringify(patientParams));
   return this.http.get<Patient[]>(this.baseUrl + 'patients', { observe: 'response', params})
     .pipe(
       map(response => {
         paginatedResult.result = response.body;
         if (response.headers.get('Pagination') != null) {
           paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
-          console.log('patient service' + JSON.stringify(paginatedResult.pagination));
         }
         return paginatedResult;
       })

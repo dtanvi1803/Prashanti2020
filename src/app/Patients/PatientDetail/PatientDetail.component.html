@@ -3,7 +3,8 @@
     <div class="col-sm-4">
       <div class="card">
         <div class="card-title"><strong>{{patient.name}}</strong></div>
-        <img class="card-img-top img-thumbnail" src="{{patient.photoUrl || '../../../../../assets/images/user.png" alt="{{patient.name}}">
+        <img *ngIf = "!patient.photoUrl" class="card-img-top img-thumbnail" src='../../../../../assets/images/user.png' alt="{{patient.name}}">
+        <img *ngIf = "patient.photoUrl" class="card-img-top img-thumbnail" src="{{patient.photoUrl}}" alt="{{patient.name}}" >
         <div class="card-body">
           <div>
             <p>Refering Dr. {{patient.referingDr}}</p>
