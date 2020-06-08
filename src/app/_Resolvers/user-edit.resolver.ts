@@ -16,7 +16,7 @@ export class UserEditResolver implements Resolve<User> {
 
         resolve(route: ActivatedRouteSnapshot): Observable<User> {
             console.log('resolver id' + this.authService.decodedToken.nameid);
-            return this.userService.getUser(this.authService.decodedToken.nameid)
+            return this.userService.getUser(route.params['id'])
             .pipe(catchError(error => {
                 this.alertify.error('Propblem retriving your user data');
                 console.error(error);

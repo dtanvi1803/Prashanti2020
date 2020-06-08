@@ -1,15 +1,20 @@
 <div class="card mb-4">
   <div class="card-body p-1">
     <img class= "card-image-top" src="{{user.photoUrl || '../../../../../assets/user.png'}}" alt="{{user.name}}">
-    <h6 class="card-title text-center mb-1"><i class="fa fa-user"></i>{{user.username}}</h6>
+    <div *ngIf = user.isAdmin>
+      <h6 class="card-title text-center mb-1"><a class="btn btn-danger" href="#"><i class="fa fa-user fa-3x">{{user.username}}</i></a></h6>
+    </div> 
+    <h4 class="card-title text-center mb-1">{{ user.name}}</h4>
+    <h6 class="card-title text-center mb-1">{{ user.contactno }}</h6>
     <p class="card-text text-muted text-center">{{user.lastActive | timeAgo}}</p>
     <p class="card-text text-muted text-center">{{user.city}}</p>
   <!-- </div>
   <div class="card-footer"> -->
     <ul class="list-inline member-icons animate text-center">
-      <li class="list-inline-item"><button class="btn btn-primary btn-sm" 
-        [routerLink]="['/listusers/', user.id]" ><i class="fa fa-user"></i>Edit</button></li>
-      <li class="list-inline-item"><button class="btn btn-primary btn-sm"><i class="fa fa-envelope"></i>Msg</button></li>
+      <li class="list-inline-item">
+        <button class="btn btn-primary btn-lg" 
+        [routerLink]="['/listusers/', user.id]" ><i class="fa fa-user"></i><br>Edit</button></li>
+      <!-- <li class="list-inline-item"><button class="btn btn-primary btn-sm"><i class="fa fa-envelope"></i>Msg</button></li> -->
     </ul>
   </div>
 </div>

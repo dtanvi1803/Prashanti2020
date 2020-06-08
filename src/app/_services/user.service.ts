@@ -19,10 +19,11 @@ constructor(private http: HttpClient) { }
       params = params.append('pageNumber', page);
       params = params.append('pageSize', itemsPerPage) ;
     }
-    if (userParams != null) {
-      params = params.append('city', userParams.city);
-      params = params.append('clinicId', userParams.clinicId);
-    }
+    // if (userParams != null) {
+    //   params = params.append('city', userParams.city);
+    //   params = params.append('clinicId', userParams.clinicId);
+    // }
+    console.log('params in userservice' + params);
     return this.http.get<User[]>(this.baseUrl + 'users', { observe: 'response', params})
       .pipe(
         map(response => {

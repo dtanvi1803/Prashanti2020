@@ -14,7 +14,8 @@
       <a mat-list-item  [routerLink]="['/contactus']" routerLinkActive="active-list-item">CONTACT US</a>      
       <a mat-list-item  [routerLink]="['/guidelines']" routerLinkActive="active-list-item">GUIDELINES</a>
       <a mat-list-item  [routerLink]="['/mentalillness']" routerLinkActive="active-list-item">MENTAL ILLNESS</a>
-      <a mat-list-item *ngIf="!loggedIn()"  [routerLink]="['/portal']" routerLinkActive="active-list-item">Patient Portal</a>
+      <a mat-list-item class="dropdown-item" [routerLink]="['/myths']" routerLinkActive="active-list-item">MYTHS</a>
+      <a mat-list-item *ngIf="!loggedIn()"  [routerLink]="['/portal']" routerLinkActive="active-list-item">Doctor's Desk</a>
 			      
       <!--<mat-list style="margin-left:30px;">
        <div class="dropdown-menu mt-3" aria-labelledby="dropdown01" *dropdownMenu> -->
@@ -24,7 +25,7 @@
         <a mat-list-item class="dropdown-item" [routerLink]="['/mentalillness']">Depresion</a>
         <a mat-list-item class="dropdown-item" [routerLink]="['/mentalillness']">OCD</a>
       </mat-list> -->
-        <a mat-list-item class="dropdown-item" [routerLink]="['/myths']" routerLinkActive="active-list-item">Myths</a>
+        
       <!-- </div> -->
       <div *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['listusers/schedule']" >My Schedule</a>
@@ -100,7 +101,7 @@
           Welcome {{ authService.decodedToken?.unique_name | titlecase}}
         </a>
         <div class="dropdown-menu mt-3" *dropdownMenu>
-          <a class="dropdown-item" [routerLink]="['listusers/edit']"><i class="fa fa-user"></i>Edit Profile</a>
+          <a class="dropdown-item" [routerLink]="['listusers/edit/' + authService.decodedToken?.nameid]"><i class="fa fa-user"></i>Edit Profile</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click) = "logout()"><i class="fa fa-sign-out"></i> Logout</a>
         </div>

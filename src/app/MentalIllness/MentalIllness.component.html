@@ -6,7 +6,7 @@
         Anxiety
       </mat-panel-title>
       <mat-panel-description>
-        Clinic and Anxiety
+        Dealing with Anxiety
       </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-accordion class="example-headers-align">
@@ -28,7 +28,7 @@
         </mat-action-row>
       </mat-expansion-panel>
     
-      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <!-- <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Anxiety typical case study
@@ -57,13 +57,13 @@
             <mat-icon>date_range</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        self help and doctor consultation
+        self help and doctor consultation 
     
         <mat-action-row>
           <button mat-button color="warn" (click)="prevStep()">Previous</button>
           <button mat-button color="primary" (click)="nextStep()">End</button>
         </mat-action-row>
-      </mat-expansion-panel>
+      </mat-expansion-panel> -->
     
     </mat-accordion>
     
@@ -78,10 +78,22 @@
         ADHD
       </mat-panel-title>
       <mat-panel-description>
-        ADHD
+        ADHD is one of the most common neurodevelopmental disorders of childhood.
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <mat-accordion class="example-headers-align">
+    <p>It is usually first diagnosed in childhood and often lasts into adulthood. Children with ADHD may have trouble paying attention, controlling impulsive behaviors (may act without thinking about what the result will be), or be overly active.</p>
+    <p>It is normal for children to have trouble focusing and behaving at one time or another. However, children with ADHD do not just grow out of these behaviors. The symptoms continue, can be severe, and can cause difficulty at school, at home, or with friends.</p>
+    <p>A child with ADHD might:</p>
+    <ul>
+      <li>daydream a lot</li>
+      <li>forget or lose things a lot</li>
+      <li>talk too much</li>
+      <li>make careless mistakes or take unnecessary risks</li>
+      <li>have a hard time resisting temptation</li>
+      <li>have trouble taking turns</li>
+      <li>have difficulty getting along with others</li>
+    </ul>
+    <!-- <mat-accordion class="example-headers-align">
       <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -136,7 +148,7 @@
         </mat-action-row>
       </mat-expansion-panel>
     
-    </mat-accordion>
+    </mat-accordion> -->
         
   </mat-expansion-panel>
   <!-- ADHD finished -->
@@ -146,17 +158,17 @@
                        (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Depresion
+        Depression
       </mat-panel-title>
       <mat-panel-description>
-        Depresion
+        Common illness worldwide
       </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-accordion class="example-headers-align">
       <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            know about Depresion
+            Know about Depresion
           </mat-panel-title>
           <mat-panel-description>
             Depresion disorder more information
@@ -165,7 +177,9 @@
         </mat-expansion-panel-header>
     
         <p>Depression is a low mood that lasts for a long time, and affects your everyday life. It feels like I'm stuck under a huge grey-black cloud. It's dark and isolating, smothering me at every opportunity.</p>
-    
+        <p>Depression is different from usual mood fluctuations and short-lived emotional responses to challenges in everyday life. Especially when long-lasting and with moderate or severe intensity, depression may become a serious health condition. It can cause the affected person to suffer greatly and function poorly at work, at school and in the family. At its worst, depression can lead to suicide</p>
+        <p>Depending on the number and severity of symptoms, a depressive episode can be categorized as mild, moderate or severe.</p>
+        <p>A key distinction is also made between depression in people who have or do not have a history of manic episodes. Both types of depression can be chronic (i.e. over an extended period) with relapses, especially if they go untreated.</p>
         <mat-action-row>
           <button mat-button color="primary" (click)="nextStep()">Next</button>
         </mat-action-row>
@@ -243,7 +257,7 @@
           <button mat-button color="primary" (click)="nextStep()">Next</button>
         </mat-action-row>
       </mat-expansion-panel>          
-      <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+      <!-- <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Depresion self help and doctor consultation
@@ -260,7 +274,7 @@
           <button mat-button color="warn" (click)="prevStep()">Previous</button>
           <button mat-button color="primary" (click)="nextStep()">End</button>
         </mat-action-row>
-      </mat-expansion-panel>
+      </mat-expansion-panel> -->
     
     </mat-accordion>
         
@@ -282,7 +296,7 @@
       <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            know about OCD
+            Know about OCD
           </mat-panel-title>
           <mat-panel-description>
             OCD disorder more information
@@ -307,15 +321,15 @@
             <mat-icon>map</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p>There was a lady around 35 years of age good looking and mannered. Came to me one afternoon . Hastily siting on the chair arranging her belongings in specific manner and her first sentence was
+        <p>There was a lady around 35 years of age good looking and mannered. Came to me one afternoon . Hastily siting on the chair arranging her belongings in specific manner and her first sentence was </p>
 
-            "Doctor, I don't enjoy my life.. "
-            She was a housewife and her husband was currently in financial mess. She wanted to help him but cannot. As her entire time was consumed in washing and cleaning activities. She was lacking self confidence and was avoiding attending social functions as she was having doubts about herself....
+            <h4>"Doctor, I don't enjoy my life.. "</h4>
+            <p>She was a housewife and her husband was currently in financial mess. She wanted to help him but cannot. As her entire time was consumed in washing and cleaning activities. She was lacking self confidence and was avoiding attending social functions as she was having doubts about herself....</p>
 
-            Doctor's observation:
-            I started her treatment and counseled her about certain life style changes.. and after few follow up she came to my consulting room smile on her face and said "Now I have started attending functions and even applied for a job as her habit of excessive cleaning and washing has reduced by dramatic amount.".
+            <h5>Doctor's observation:</h5>
+            <p>I started her treatment and counseled her about certain life style changes.. and after few follow up she came to my consulting room smile on her face and said "Now I have started attending functions and even applied for a job as her habit of excessive cleaning and washing has reduced by dramatic amount.".</p>
 
-            This patient was having obsessive compulsive disorder.</p>
+            <p>This patient was having obsessive compulsive disorder.</p>
     
         <mat-action-row>
           <button mat-button color="warn" (click)="prevStep()">Previous</button>
@@ -323,7 +337,7 @@
         </mat-action-row>
       </mat-expansion-panel>
     
-      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+      <!-- <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             OCD self help and doctor consultation
@@ -340,7 +354,7 @@
           <button mat-button color="primary" (click)="nextStep()">End</button>
         </mat-action-row>
       </mat-expansion-panel>
-    
+     -->
     </mat-accordion>
         
   </mat-expansion-panel>
@@ -388,13 +402,15 @@
             <mat-icon>map</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p>This is a story of a young girl 16 years of age brought to me by her parents residing in a town 100 km near Surat, the father started narrating it this way
+        <p>This is a story of a young girl 16 years of age brought to me by her parents residing in a town 100 km near Surat, the father started narrating it this way </p>
 
-"My daughter as such is very intelligent but since few months her communication is reduce drastically she doesn't talk , she doesn't go out of house or even do not eat or sleep properly"
-further he stated her self care is poor, gets irritated easily.. quarrel with family members on matters which never happened. Sits on the door all the time staring on certain things laughing to herself and cooks her own food. As father was of good reputation was afraid to say anything else. But that girl interrupted our conversation and told  that these things started long back when she was in early years of school. A teacher scolded her and now she is hearing that teacher talking bad about her.
+<h4>"My daughter as such is very intelligent but since few months her communication is reduce drastically she doesn't talk , she doesn't go out of house or even do not eat or sleep properly" </h4>
+<p>further he stated her self care is poor, gets irritated easily.. quarrel with family members on matters which never happened. Sits on the door all the time staring on certain things laughing to herself and cooks her own food.</p>
+<p> As father was of good reputation was afraid to say anything else. But that girl interrupted our conversation and told  that these things started long back when she was in early years of school.</p>
+<p> A teacher scolded her and now she is hearing that teacher talking bad about her.</p>
 
-Doctor's observation after treatment :
-On giving medicine she responded positively ,on the very second visit I saw good amount of changes in her way of talking and her dress was also  relatively improved. After 7 the follow up her father cried out of happiness as his daughter was behaving as good as never before. I still remember his words" Doctor u saved my child's life and I'm in debt of u" this girl was suffering from schizophrenia since years and was not treated by any professional.</p>
+<h5>Doctor's observation after treatment :</h5>
+<p>On giving medicine she responded positively ,on the very second visit I saw good amount of changes in her way of talking and her dress was also  relatively improved. After 7 the follow up her father cried out of happiness as his daughter was behaving as good as never before. I still remember his words" Doctor u saved my child's life and I'm in debt of u" this girl was suffering from schizophrenia since years and was not treated by any professional.</p>
     
         <mat-action-row>
           <button mat-button color="warn" (click)="prevStep()">Previous</button>
@@ -402,7 +418,7 @@ On giving medicine she responded positively ,on the very second visit I saw good
         </mat-action-row>
       </mat-expansion-panel>
     
-      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+      <!-- <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Schizophrenia self help and doctor consultation
@@ -418,7 +434,7 @@ On giving medicine she responded positively ,on the very second visit I saw good
           <button mat-button color="warn" (click)="prevStep()">Previous</button>
           <button mat-button color="primary" (click)="nextStep()">End</button>
         </mat-action-row>
-      </mat-expansion-panel>
+      </mat-expansion-panel> -->
     
     </mat-accordion>
         
