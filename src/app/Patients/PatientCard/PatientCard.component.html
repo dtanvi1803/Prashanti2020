@@ -2,16 +2,20 @@
   <div class="card-body p-1">
     <h6 class="card-title text-center mb-1">
       <i class="fa fa-user"></i>{{patient.name}} --> Dr.{{patient.referingDr}}</h6>
-      <p class="text-muted">age: {{patient.age}}, Gender: {{patient.gender}}, city: {{patient.city}} </p>
-      <p class="card-text text-muted text-center">{{patient.contactNo}}</p>
+      <p class="text-muted">age: {{patient.age}}, Gender: {{patient.gender}}, city: {{patient.city}}, Contact No: {{patient.contactNo}}, eMail : {{patient.email}} </p>
+      <p class="card-text text-muted text">Diag: {{patient.diagnosis}}</p>
+      <p> #Visits {{ patient.visitDetails.length}}, #Radiology/Pathology Reports: {{ patient.reports.length }}</p>
      <p class="text-muted">Last Visit:{{ patient.lastVisit | timeAgo}}</p>
-    
   </div>
-    <div class="card-footer text-muted">
+  <ul class="list-inline member-icons animate text-center">
+    <li class="list-inline-item"><button class="btn btn-primary btn-sm" 
+      [routerLink]="['/lstpatients/', patient.id]" ><i class="fa fa-user"></i>Detail</button></li>
+    </ul>
+        <!-- <div class="card-footer text-muted">
     <ul class="list-inline member-icons animate text-center">
       <li class="list-inline-item"><button class="btn btn-primary btn-sm" 
         [routerLink]="['/lstpatients/', patient.id]" ><i class="fa fa-user"></i>Detail</button></li>
       </ul>
-  </div>
+  </div> -->
   
 </div>

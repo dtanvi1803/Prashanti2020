@@ -7,11 +7,11 @@ import { User } from 'src/app/_models/user';
 import { Appointment } from 'src/app/_models/appointment';
 
 @Component({
-  selector: 'app-AppointmentLIst',
-  templateUrl: './AppointmentLIst.component.html',
-  styleUrls: ['./AppointmentLIst.component.css']
+  selector: 'app-AppointmentList',
+  templateUrl: './AppointmentList.component.html',
+  styleUrls: ['./AppointmentList.component.css']
 })
-export class AppointmentLIstComponent implements OnInit {
+export class AppointmentListComponent implements OnInit {
 appDate: Date;
 appts: Appointment[];
 pagination: Pagination;

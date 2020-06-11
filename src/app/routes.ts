@@ -29,7 +29,7 @@ import { VisitListResolver } from './_Resolvers/visit-list.resolver';
 import { VisitPreventUnsavedChanges } from './_guards/visit-prevent-unsaved-changes.guard copy';
 import { SchedulerComponent } from './Patients/Scheduler/Scheduler.component';
 import { AppointmentListResolver } from './_Resolvers/appointment-list.resolver';
-import { AppointmentLIstComponent } from './Patients/Scheduler/AppointmentLIst/AppointmentLIst.component';
+import { AppointmentListComponent } from './Patients/Scheduler/AppointmentList/AppointmentList.component';
 import { AppointmentDetailComponent } from './Patients/Scheduler/AppointmentDetail/AppointmentDetail.component';
 import { AppointmentEditResolver } from './_Resolvers/appointment-edit.resolver';
 
@@ -40,7 +40,7 @@ export const appRoutes: Routes = [
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
-            {path: 'listusers/schedule/:date', component: AppointmentLIstComponent, resolve: { appointments: AppointmentListResolver}},
+            {path: 'listusers/schedule/:date', component: AppointmentListComponent, resolve: { appointments: AppointmentListResolver}},
             {path: 'listusers/schedule/edit/:id', component: AppointmentDetailComponent, resolve: { appointment: AppointmentEditResolver}},
             {path: 'listusers/schedule', component: SchedulerComponent},
             {path: 'listusers', component: UserListComponent, resolve: { users: UserListResolver}},

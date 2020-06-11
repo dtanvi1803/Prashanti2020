@@ -42,7 +42,7 @@ import { FilterPipe } from './Patients/filter.pipe';
 import { ValueComponent } from './value/value.component';
 
 import { SchedulerComponent } from './Patients/Scheduler/Scheduler.component';
-import { AppointmentLIstComponent } from './Patients/Scheduler/AppointmentLIst/AppointmentLIst.component';
+import { AppointmentListComponent } from './Patients/Scheduler/AppointmentList/AppointmentList.component';
 import { AppointmentDetailComponent } from './Patients/Scheduler/AppointmentDetail/AppointmentDetail.component';
 import { AppointmentListResolver } from './_Resolvers/appointment-list.resolver';
 import { AppointmentEditResolver } from './_Resolvers/appointment-edit.resolver';
@@ -105,7 +105,7 @@ export function tokenGetter() {
       VisitDetailsEditComponent,
       VisitDetailCardComponent,
       SchedulerComponent,
-      AppointmentLIstComponent,
+      AppointmentListComponent,
       AppointmentDetailComponent,
       MyDateTimePickerComponent,
       PatientLookupComponent,

@@ -8,7 +8,7 @@
       <tr>
         <th style="width: 15%">Start</th>
         <th style="width: 25%">Patient</th>
-        <th style="width: 25%">Title</th>
+        <th style="width: 25%">Purpose</th>
         <th style="width: 25%">Complaints</th>
         <th style="width: 10%">Status</th>
       </tr>
@@ -26,7 +26,7 @@
     </table>
   </div>  
 </div>  
-<div class="d-flex justify-content-center" *ngIf="appointments?.length > 0">
+<div class="d-flex justify-content-center" *ngIf="appts?.length > 0">
   <pagination [boundaryLinks]="true" 
               [totalItems]="pagination.totalItems"
               [itemsPerPage]="pagination.itemsPerPage"
